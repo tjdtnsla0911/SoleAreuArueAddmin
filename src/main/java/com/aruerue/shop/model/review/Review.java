@@ -19,9 +19,5 @@ private int userId;
 private Timestamp createDate;
 private int star;
 private String img;
-private boolean existenceOfImg; //이건 필요없을 듯...
-
-
-
 private int orderId;
 }

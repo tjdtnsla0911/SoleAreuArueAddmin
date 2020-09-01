@@ -71,7 +71,6 @@ CREATE TABLE review   (
     createDate timestamp,
     star int, #난 예전에 별개수를 int로 바꿔서 넣어서 일단 int로 했음
     img varchar(1500), #경로
-    existenceOfImg boolean, #이미지 올린놈인지아닌지
     orderId int #결제방법때문에필요
 ) engine=InnoDB default charset=utf8;
 
@@ -226,15 +225,13 @@ insert into product(title,thumb,price,disc,ad,discounted,content,categoryId,bgIm
 values ('기프트 세트','/img/item3_product.png',63000,'OPTION. 구성품 택1 (키친 세트,리빙케어 세트, 런드미 세트중) OPTION 2. 박스 색상 택1 (프레시 네이버,베이비 민트 중)',false,39000,'content3',2,'/img/main3.jpg', true, false, false);
 
 
-
 #review 더미데이터
-insert into review(productId,content,userId,createDate,star,img,existenceOfImg,orderId)
-<<<<<<< HEAD
-values(1,'너무비싸서 놀랫네요..',1,now(),5,'/img/home_review1.jpg',true,1);
-insert into review(productId,content,userId,createDate,star,img,existenceOfImg,orderId)
-values(2,'아르아르 믿을수가없다',2,now(),1,'/img/home_review2.jpg',true,1);
-insert into review(productId,content,userId,createDate,star,img,existenceOfImg,orderId)
-values(1,'너무비싸서 놀랫네요..',3,now(),3,'/img/home_review1.jpg',true,1);
+insert into review(productId, title, content, userId,createDate, star, img, orderId)
+values(1,'제목1입니다.', '너무비싸서 놀랫네요..',1,now(),5,'/img/home_review1.jpg',1);
+insert into review(productId, title, content, userId,createDate, star, img, orderId)
+values(2,'제목2입니다.','아르아르 믿을수가없다',2,now(),1,'/img/home_review2.jpg',1);
+insert into review(productId, title, content, userId,createDate, star, img, orderId)
+values(1,'제목3입니다.', '보통입니다',3,now(),3,'/img/home_review1.jpg',1);
 
 #recomment 더미데이터
 insert into recomment(reviewId,comment,createDate)
@@ -688,11 +685,7 @@ FROM orders_detail od LEFT OUTER JOIN orders o
 ON od.orderId = o.id
 LEFT OUTER JOIN product p
 ON od.productId = p.id
-WHERE o.userId = (
-SELECT u.id
-FROM orders o LEFT OUTER JOIN user u
-ON o.userId = u.id
-WHERE u.id = 1);
+WHERE o.userId = 1;
 ```
 
 //wish_list
@@ -701,10 +694,10 @@ POST
 MypageWishResponseDto
 
 ```
-SELECT p.thumb, p.title, p.price, p.discounted, p.sale, p.newly, p.best
+SELECT w.id, p.thumb, p.title, p.price, p.discounted, p.sale, p.newly, p.best
 FROM wishlist w LEFT OUTER JOIN product p
 ON w.productId = p.id
-WHERE w.userId in (SELECT u.id FROM wishlist w LEFT OUTER JOIN user u ON w.userId = u.id WHERE u.id = 1);
+WHERE w.userId = 1;
 ```
 
 //cancle

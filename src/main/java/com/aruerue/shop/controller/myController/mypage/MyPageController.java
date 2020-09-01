@@ -1,4 +1,4 @@
-package com.aruerue.shop.controller;
+package com.aruerue.shop.controller.myController.mypage;
 
 import java.util.List;
 
@@ -33,14 +33,7 @@ public class MyPageController {
 				.findOrdersById(userId);
 		return mypageOrdersResponseDto;
 	}
-
-	@PostMapping("/shop_mypage/{userId}/wish_list")
-	public List<MypageWishResponseDto> mypageWish(@PathVariable int userId) {
-		List<MypageWishResponseDto> mypageWishResponseDto = (List<MypageWishResponseDto>) myPageRepository
-				.findWishlistsById(userId);
-		return mypageWishResponseDto;
-	}
-
+	
 	@PostMapping("/shop_mypage/{userId}/cancle")
 	public String mypageCart(@PathVariable int userId) {
 		List<MypageCancleRespDto> mypageCancleRespDto = (List<MypageCancleRespDto>) myPageRepository
@@ -61,14 +54,6 @@ public class MyPageController {
 				.findPointById(userId);
 		return mypagePointRespDto;
 	}
-
-	@PostMapping("/shop_mypage/{userId}/qna")
-	public List<MypageQnaRespDto> mypageQnA(@PathVariable int userId) {
-		List<MypageQnaRespDto> mypageQnaRespDto = (List<MypageQnaRespDto>) myPageRepository
-				.findQnaById(userId);
-		return mypageQnaRespDto;
-	}
-	
 
 	@PostMapping("/shop_mypage/{userId}/update")
 	public MypageUpdateRespDto mypageUpdate(@PathVariable int userId) {
