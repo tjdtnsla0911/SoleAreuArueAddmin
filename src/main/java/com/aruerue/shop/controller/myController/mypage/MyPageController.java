@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.aruerue.shop.controller.dto.CommonRespDto;
@@ -17,6 +18,7 @@ import com.aruerue.shop.controller.dto.mypage.MypageUpdateRespDto;
 import com.aruerue.shop.controller.dto.mypage.MypageWishResponseDto;
 import com.aruerue.shop.controller.dto.qnA.CommentOnQnARespDto;
 import com.aruerue.shop.controller.dto.review.ReviewDetailRespDto;
+import com.aruerue.shop.model.user.Cart;
 import com.aruerue.shop.repository.MyPageRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -34,8 +36,18 @@ public class MyPageController {
 		return mypageOrdersResponseDto;
 	}
 	
+	//결제 추가
+	//insert
+	//@PostMapping("/payment/{id}")
+	//	public CommonRespDto<?> payment(@RequestBody C){
+	//		System.out.println("saveCart: "+cart);
+	//		myPageRepository.saveCart(cart);
+	//		return new CommonRespDto<String>(); 		
+	//	}
+	
+	
 	@PostMapping("/shop_mypage/{userId}/cancle")
-	public String mypageCart(@PathVariable int userId) {
+	public String mypageCancle(@PathVariable int userId) {
 		List<MypageCancleRespDto> mypageCancleRespDto = (List<MypageCancleRespDto>) myPageRepository
 				.findCancleById(userId);
 		return mypageCancleRespDto + "마이페이지  취소/교환/반품 화면 입니다.";

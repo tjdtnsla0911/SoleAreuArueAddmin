@@ -2,9 +2,11 @@ package com.aruerue.shop.controller.myController;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -43,6 +45,22 @@ public class ReviewController {
 		repository.saveReview(review);
 		return new CommonRespDto<String>(); 		
 	}
+	
+	//update
+		@PutMapping("/review")
+		public CommonRespDto<?> updateReview(@RequestBody Review review){
+			System.out.println("review : "+review);
+			repository.updateReview(review);
+			return new CommonRespDto<String>(); 		
+		}
+		
+		//delete
+		@DeleteMapping("/review/{id}")
+		public CommonRespDto<?> deleteReview(@PathVariable int id){
+			System.out.println(" id : "+ id);
+			repository.deleteReview(id);
+			return new CommonRespDto<String>(); 		
+		}
 	
 
 }

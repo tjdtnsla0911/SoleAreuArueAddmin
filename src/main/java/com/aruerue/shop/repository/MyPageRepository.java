@@ -9,10 +9,14 @@ import com.aruerue.shop.controller.dto.mypage.MypagePointRespDto;
 import com.aruerue.shop.controller.dto.mypage.MypageQnaRespDto;
 import com.aruerue.shop.controller.dto.mypage.MypageUpdateRespDto;
 import com.aruerue.shop.controller.dto.mypage.MypageWishResponseDto;
+import com.aruerue.shop.model.user.WishList;
 
 public interface MyPageRepository {
 	List<MypageOrdersResponseDto> findOrdersById(int id);
 	List<MypageWishResponseDto> findWishlistsById(int id);
+	void saveWishlist(int userId, int productId);
+	void deleteWishlist(int id);
+	
 	List<MypageCancleRespDto> findCancleById(int id);
 	List<MypageCouponRespDto> findCouponById(int id);
 	List<MypagePointRespDto> findPointById(int id);
