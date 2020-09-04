@@ -813,55 +813,6 @@ FROM cart c INNER JOIN product p INNER JOIN user u
 ON c.userId = u.id AND p.id = c.productId
 WHERE u.id = 1;
 
-여기부터는 READ아니고 CREATE UPDATE DELETE 주소
-#review CUD
-C
-PostM
-/review
-
-U
-PutM
-/review
-
-DeleteM
-/review/{id}
-
-#qnA CUD
-C
-PostM
-/qna
-
-U
-PutM
-/qna
-
-DeleteM
-/qna/{id}
-
-#주문조회
-
-#위시리스트
-C
-PostM
-/shop_mypage/{userId}/wish_list/{productId}
-
-D
-DeleteM
-/shop_mypage/{id}/wish_list
-
-#취소/교환/반품 #쿠폰 #포인트 #정보수정
-
-#장바구니
-C
-PostM
-/shop_cart
-
-D
-DeleteM
-/shop_cart/{id}
-
-#결제 C
-
 --------------- 스프링 서버 안가는 페이지
 GET
 "/about"

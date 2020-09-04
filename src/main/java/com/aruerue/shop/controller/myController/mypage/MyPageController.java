@@ -34,12 +34,12 @@ public class MyPageController {
 
 	// 결제 추가
 	// insert
-	// @PostMapping("/payment/{id}")
-	// public CommonRespDto<?> payment(@RequestBody C){
-	// System.out.println("saveCart: "+cart);
-	// myPageRepository.saveCart(cart);
-	// return new CommonRespDto<String>();
-	// }
+	 @PostMapping("/payment/{id}")
+	 public CommonRespDto<?> payment(@RequestBody C){
+	 System.out.println("saveCart: "+cart);
+	 myPageRepository.saveCart(cart);
+	 return new CommonRespDto<String>();
+	 }
 
 	@PostMapping("/shop_mypage/{userId}/cancle")
 	public String mypageCancle(@PathVariable int userId) {
@@ -72,8 +72,7 @@ public class MyPageController {
 		myPageRepository.deleteByid(userId);
 		if (myPageRepository.findUserById(userId) == null) {
 			System.out.println("회원탈퇴가 잘 진행 되었습니다.");
-		}
-		;
+		};
 		return new CommonRespDto<String>(1, "회원탈퇴가 잘 진행되었습니다.");
 	}
 
