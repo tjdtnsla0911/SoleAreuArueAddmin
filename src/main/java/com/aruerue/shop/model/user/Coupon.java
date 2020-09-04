@@ -17,4 +17,6 @@ private String code;
 private Date validityStart;
 private Date validityEnd;
 private boolean availability;
+private int salePrice;
+private String reason;
 }

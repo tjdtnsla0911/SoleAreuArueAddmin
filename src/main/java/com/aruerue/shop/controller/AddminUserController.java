@@ -49,6 +49,7 @@ public class AddminUserController {
 			user.get(i).setProfile(http2);
 		}
 		System.out.println(user);
+		System.out.println("user= "+user);
 		model.addAttribute("addminUserList", user);
 
 		return "addminUserList";
