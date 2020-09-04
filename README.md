@@ -211,13 +211,6 @@ values('dnjswo','dnjswo1234','dnjswop321@nate.com','이원재','남','010-2322-7
 
 #product 더미데이터
 insert into product(title,thumb,price,disc,ad,discounted,content,categoryId,bgImg, sale, newly, best)
-<<<<<<< HEAD
-values ('프레시 런드리 디터전트','/img/item1_product.png',28000,'베이비 런드리 디터전트(무향)1L*1ea',true,27000,'content1',1,'/img/main1.jpg', true, false, false);
-insert into product(title,thumb,price,disc,ad,discounted,content,categoryId,bgImg, sale, newly, best)
-values ('패밀리 키친 세트','/img/item1_product.png',40000,'프레시 디시 앤 프루트 워시 (오렌지) 500ml * 1ea 베이비 보틀 앤 토이 워시 (무향) 500ml * 1ea',true,null,'content2',2,'/img/main2.jpg', false, true, false);
-insert into product(title,thumb,price,disc,ad,discounted,content,categoryId,bgImg, sale, newly, best)
-values ('기프트 세트','/img/item1_product.png',63000,'OPTION. 구성품 택1 (키친 세트,리빙케어 세트, 런드미 세트중) OPTION 2. 박스 색상 택1 (프레시 네이버,베이비 민트 중)',false,39000,'content3',2,'/img/main3.jpg', true, false, false);
-=======
 values ('프레시 런드리 디터전트','/img/item1_product.png',28000,'베이비 런드리 디터전트(무향)1L*1ea',true,27000,'content1',1,'/img/main2.jpg', true, false, false);
 insert into product(title,thumb,price,disc,ad,discounted,content,categoryId,bgImg, sale, newly, best)
 values ('패밀리 키친 세트','/img/item2_product.png',40000,'프레시 디시 앤 프루트 워시 (오렌지) 500ml * 1ea 베이비 보틀 앤 토이 워시 (무향) 500ml * 1ea',true,null,'content2',2,'/img/main2.jpg', false, true, false);
@@ -515,7 +508,7 @@ on r.productId = p.id;
 
 // detail
 GET
-"/shop_view/{id}" ->상품아이디!  
+"/shop_view/{id}" ->상품아이디!
 DetailRespDto
 
 DetailProductRespDto
@@ -554,7 +547,7 @@ WHERE q.productId = 2;
 DetailRelatedRespDto
 ->
 ##detail page -> 관련상품 부분
-SELECT id, thumb, title, price, discounted, sale, newly, best  
+SELECT id, thumb, title, price, discounted, sale, newly, best
 FROM product
 WHERE id IN (select relatedProductId from related_product where parentProductId= 2);
 

@@ -23,4 +23,4 @@ spring:
     cache: false 
   
 file:
-  path: C:/Users/admin/Desktop/gitclone/aruerue-backsrc/main/resources/static/images/
+  path: C:/Users/admin/Desktop/gitclone2/spring-test9/main/resources/static/images/

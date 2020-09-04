@@ -16,12 +16,11 @@ public interface MyPageRepository {
 	List<MypageWishResponseDto> findWishlistsById(int id);
 	void saveWishlist(int userId, int productId);
 	void deleteWishlist(int id);
-	
+
 	List<MypageCancleRespDto> findCancleById(int id);
 	List<MypageCouponRespDto> findCouponById(int id);
 	List<MypagePointRespDto> findPointById(int id);
 	List<MypageQnaRespDto> findQnaById(int id);
 	MypageUpdateRespDto findUserById(int id);
 	void deleteByid(int id);	
-
 }

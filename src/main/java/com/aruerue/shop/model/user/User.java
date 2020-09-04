@@ -16,7 +16,6 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class User {
-
     private int id;
     private String username;
     private String password;
@@ -35,7 +34,7 @@ public class User {
     private String profile;
     private Timestamp createDate;
 
-
+    private int totalPoint;
     // ENUM으로 안하고 ,로 해서 구분해서 ROLE을 입력 -> 그걸 파싱!!
     public List<String> getRoleList(){
     	System.out.println("model.User의 getRoleList()에 왔습니다");

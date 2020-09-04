@@ -64,4 +64,5 @@
 		SELECT * FROM user
 		ORDER BY id
 	</select>
+
 </mapper>
