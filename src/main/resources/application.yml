@@ -10,8 +10,8 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/areuareu?serverTimezone=Asia/Seoul
-    username: areuareu
-    password: bitc5600
+    username: cos
+    password: cos1234
   servlet:
     multipart:
       enabled: true
@@ -20,7 +20,12 @@ spring:
     livereload:
       enabled: true
   freemarker:
-    cache: false 
-  
+    cache: false
+
+
 file:
   path: C:/Users/admin/Desktop/gitclone/aruerue-backsrc/main/resources/static/images/
+
+ #path: C:/Users/82105/Desktop/gitclone/spring-test7/src/main/resources/static/images/
+
+

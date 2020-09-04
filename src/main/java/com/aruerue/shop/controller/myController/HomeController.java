@@ -3,7 +3,7 @@ package com.aruerue.shop.controller.myController;
 import java.util.ArrayList;
 import java.util.List;
 
-
+import org.springframework.context.annotation.Profile;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,16 +33,17 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @RestController
-public class HomeController {	
+@Profile("moon")
+public class HomeController {
 	private final Repository repository;
 
 	@GetMapping({" ","/"})
-	public HomeResponseDto home() {		
+	public HomeResponseDto home() {
 		List<HomeAdResoDto> homeAdResoDtos = repository.findHomeAd();
 		List<HomeNoticeRespDto> homeNoticeRespDtos = repository.findNotice();
 		List<HomeProductRespDto> homeProductRespDtos = repository.findProductsForHome();
 		List<HomeReviewRespDto> homeReviewRespDtos = repository.findReviewsForHome();
-		
+
 		HomeResponseDto homeResponseDto = HomeResponseDto.builder()
 				.homeAdResoDto(homeAdResoDtos)
 				.homeNoticeRespDto(homeNoticeRespDtos)
@@ -51,5 +52,5 @@ public class HomeController {
 				.build();
 		return homeResponseDto;
 	}
-	
+
 }
