@@ -17,7 +17,7 @@ import lombok.RequiredArgsConstructor;
 public class MypageQnAController {
 	private final MyPageRepository myPageRepository;
 
-	@PostMapping("/shop_mypage/{userId}/qna")
+	@PostMapping("/shop_mypage/qna/{userId}")
 	public List<MypageQnaRespDto> mypageQnA(@PathVariable int userId) {
 		List<MypageQnaRespDto> mypageQnaRespDto = (List<MypageQnaRespDto>) myPageRepository.findQnaById(userId);
 		return mypageQnaRespDto;

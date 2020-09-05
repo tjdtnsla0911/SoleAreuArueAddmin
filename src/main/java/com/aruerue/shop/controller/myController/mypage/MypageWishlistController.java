@@ -23,7 +23,7 @@ import lombok.RequiredArgsConstructor;
 public class MypageWishlistController {
 	private final MyPageRepository myPageRepository;
 
-	@PostMapping("/shop_mypage/{userId}/wish_list")
+	@PostMapping("/shop_mypage/wish_list/{userId}")
 	public List<MypageWishResponseDto> mypageWish(@PathVariable int userId) {
 		List<MypageWishResponseDto> mypageWishResponseDto = (List<MypageWishResponseDto>) myPageRepository
 				.findWishlistsById(userId);
@@ -31,7 +31,7 @@ public class MypageWishlistController {
 	}
 
 	// insert //우선 .. 토큰에서 userId를 꺼낼지 말지
-	@PostMapping("/shop_mypage/{userId}/wish_list/{productId}")
+	@PostMapping("/shop_mypage/wish_list/{userId}/{productId}")
 	public CommonRespDto<?> saveWishlist(@PathVariable int userId, @PathVariable int productId) {
 		System.out.println("saveWishlist-userId : " + userId);
 		System.out.println("saveWishlist-productId : " + productId);
@@ -40,10 +40,11 @@ public class MypageWishlistController {
 	}
 
 	// delete
-	@DeleteMapping("/shop_mypage/{id}/wish_list")
-	public CommonRespDto<?> deleteWishlist(@PathVariable int id) {
-		System.out.println("deleteWishlist - id : " + id);
-		myPageRepository.deleteWishlist(id);
+	@DeleteMapping("/shop_mypage/wish_list/{userId}/{productId}")
+	public CommonRespDto<?> deleteWishlist(@PathVariable int userId, @PathVariable int productId) {
+		System.out.println("deleteWishlist-userId : " + userId);
+		System.out.println("deleteWishlist-productId : " + productId);
+		//myPageRepository.deleteWishlist(userId,productId);
 		return new CommonRespDto<String>();
 	}
 }

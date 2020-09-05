@@ -1,4 +1,4 @@
-package com.aruerue.shop.controller.myController;
+ package com.aruerue.shop.controller.myController;
 
 import java.util.List;
 
@@ -28,16 +28,16 @@ public class ShopController {
 		return ShopRespDtos;
 	}
 
-	@GetMapping("/shop_view/{id}")
-	public DetailResponseDto shop_view(@PathVariable int id) {
-		DetailProductRespDto detailProductRespDto = repository.findProductById(id);
-		List<DetailReviewRespDto> detailReviewRespDto = repository.findReviewsById(id);
-		List<DetailQnARespDto> detailQnARespDto = repository.findQnAByIdForDetail(id);
-		List<DetailRelatedRespDto> detailRelatedRespDto = repository.findRelatedProductsById(id);
+	@GetMapping("/shop_view/{productId}")
+	public DetailResponseDto shop_view(@PathVariable int productId) {
+		DetailProductRespDto detailProductRespDto = repository.findProductById(productId);
+		List<DetailReviewRespDto> detailReviewRespDto = repository.findReviewsById(productId);
+		List<DetailQnARespDto> detailQnARespDto = repository.findQnAByIdForDetail(productId);
+		List<DetailRelatedRespDto> detailRelatedRespDto = repository.findRelatedProductsById(productId);
 		DetailResponseDto detailResponseDto = DetailResponseDto.builder().detailProductRespDto(detailProductRespDto)
 				.detailReviewRespDto(detailReviewRespDto).detailQnARespDto(detailQnARespDto)
 				.detailRelatedRespDto(detailRelatedRespDto).build();
 		return detailResponseDto;
 	}
-
+ 
 }

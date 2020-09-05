@@ -30,9 +30,9 @@ public class ReviewController {
 		return reviewRespDto;
 	}
 
-	@GetMapping("/review_detail/{id}")
-	public ReviewDetailRespDto reviewDetail(@PathVariable int id) {
-		ReviewDetailRespDto reviewDetailRespDto = repository.findReviewById(id);
+	@GetMapping("/review_detail/{reviewId}")
+	public ReviewDetailRespDto reviewDetail(@PathVariable int reviewId) {
+		ReviewDetailRespDto reviewDetailRespDto = repository.findReviewById(reviewId);
 		return reviewDetailRespDto;
 	}
 
@@ -53,10 +53,10 @@ public class ReviewController {
 	}
 
 	// delete
-	@DeleteMapping("/review/{id}")
-	public CommonRespDto<?> deleteReview(@PathVariable int id) {
-		System.out.println(" id : " + id);
-		repository.deleteReview(id);
+	@DeleteMapping("/review/{reviewId}")
+	public CommonRespDto<?> deleteReview(@PathVariable int reviewId) {
+		System.out.println(" id : " + reviewId);
+		repository.deleteReview(reviewId);
 		return new CommonRespDto<String>();
 	}
 
