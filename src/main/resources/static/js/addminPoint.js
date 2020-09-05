@@ -305,6 +305,16 @@ this.ViewDetails(e);
 //				});
 				}
 
+//				<th>유저넘버</th>
+//				<th>아이디</th>
+//				<th>이름</th>
+//				<th>가입일자</th>
+//				<th>쿠폰번호</th>
+//				<th>시작일자</th>
+//				<th>종료일자</th>
+//				<th>할인가격</th>
+//				<th>쿠폰사유</th>
+
 			}).fail(function(error){
 				alert(JSON.stringify(error));
 			});

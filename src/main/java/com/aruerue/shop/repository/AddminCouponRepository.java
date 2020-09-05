@@ -9,5 +9,7 @@ public interface AddminCouponRepository {
 	List<AddminCouponDto>findCount();
 	public void insertCoupon(AddminCouponDto addminCouponDto);
 	List<AddminCouponDto> findNullCoupon(int userId);
+	public void updateCoupon(AddminCouponDto updateCoupon);
+	List<AddminCouponDto> findByCouponUserAndCoupon(int userId);
 
 }

@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -64,6 +66,36 @@ public class AddminCouponController {
 		addminCouponRepository.insertCoupon(addminCouponDto);
 		System.out.println("무사히마침");
 		return "null";
+	}
+
+	@PutMapping("/giveCoupon/{userId}")
+	public @ResponseBody String giveCoupon(@RequestBody AddminCouponDto addminCouponDto) {
+		System.out.println("기브 쿠폰에왔습니다.");
+
+		System.out.println("addminCouponDto = "+addminCouponDto);
+		addminCouponRepository.updateCoupon(addminCouponDto);
+		System.out.println("업데이트끝");
+
+
+		return null;
+	}
+
+	@PutMapping("/findCoupon/{userId}")
+	public @ResponseBody List<AddminCouponDto> findCoupon(@PathVariable int userId) {
+		System.out.println("findCoupon에 왔습니다 ^^");
+		System.out.println("받은 userId = "+userId);
+		List<AddminCouponDto> addminCoDtos = addminCouponRepository.findByCouponUserAndCoupon(userId);
+		for(int i=0; i<=addminCoDtos.size()-1;i++) {
+			if(addminCoDtos.get(i).isAvailability()==true) {
+				System.out.println("트루에왔습니다");
+				addminCoDtos.get(i).setChangeAvailability("만료된쿠폰");
+
+			}else {
+				addminCoDtos.get(i).setChangeAvailability("사용가능한쿠폰");
+			}
+		}
+		System.out.println("받은 내용 = "+addminCoDtos);
+		return addminCoDtos;
 	}
 
 
