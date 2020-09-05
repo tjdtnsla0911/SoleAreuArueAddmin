@@ -32,4 +32,7 @@ private String detail_address;
 private Timestamp createDate;
 private int whatCoupons;
 
+////////// availability 체인지할꺼
+private String ChangeAvailability;
+
 }

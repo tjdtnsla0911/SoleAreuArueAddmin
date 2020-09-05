@@ -94,16 +94,17 @@ body {
 			</thead>
 			<tbody>
 				{{#couponUserList}}
-				<tr class="info">
+				<tr   class="info">
 					<td>{{userId}}</td>
-					<td>{{name}}</td>
-					<td>{{username}}</td>
-					<td>{{gender}}</td>
-					<td>{{address}}</td>
-					<td>{{detail_address}}</td>
-					<td>{{createDate}}</td>
-					<td>{{whatCoupons}}</td>
+					<td><a href="#" onclick="ddd({{userId}})" style="text-decoration:none; color: black;">{{name}}</a></td>
+					<td><a href="#" onclick="ddd({{userId}})" style="text-decoration:none; color: black;">{{username}}</a></td>
+					<td><a href="#" onclick="ddd({{userId}})" style="text-decoration:none; color: black;">{{gender}}</a></td>
+					<td><a href="#" onclick="ddd({{userId}})" style="text-decoration:none; color: black;">{{address}}</a></td>
+					<td><a href="#" onclick="ddd({{userId}})" style="text-decoration:none; color: black;">{{detail_address}}</a></td>
+					<td><a href="#" onclick="ddd({{userId}})" style="text-decoration:none; color: black;">{{createDate}}</a></td>
+					<td><a href="#" onclick="ddd({{userId}})" style="text-decoration:none; color: black;">{{whatCoupons}}</a></td>
 					<td>
+
 
 
 						<button class="btn">쿠폰주기</button>
@@ -125,11 +126,12 @@ body {
 
 
 											<tr class="info">
-<form novalidate>
+		<form novalidate>
 
-											<input type="text" value="{{userId}}" id="userId{{userId}}"name="userId" class="userId">
-											<input type="text" value="" id="kkk{{userId}}"/>
-											<button type="button" onclick="asdf({{userId}})"></button>
+
+
+											<button type="button" class="ss" onclick="asdf({{userId}})">동의하기</button>
+
 												{{#nowCoupon}}
 												<td>{{id}}</td>
 												<td>{{code}}&nbsp</td>
@@ -137,11 +139,13 @@ body {
 												<td>{{validityEnd}}&nbsp&nbsp&nbsp</td>
 												<td>{{reason}}&nbsp&nbsp&nbsp</td>
 												<td>{{salePrice}}&nbsp&nbsp&nbsp</td>
+												<input type="hidden" value="" class="userId"/>
 												<input type="hidden" id="code{{id}}" name="code" value="{{code}}">
 												<input type="hidden" id="validityStart{{id}}" name="validityStart" value="{{validityStart}}">
 												<input type="hidden" id="validityEnd{{id}}" name="validityEnd" value="{{validityEnd}}">
 												<input type="hidden" id="reason{{id}}" name="reason" value="{{reason}}">
 												<input type="hidden" id="salePrice{{id}}" name="salePrice" value="{{salePrice}}">
+												<input type="hidden" id="id{{id}}" name="id" value="{{id}}">
 
 </form>
 												<td><input type="hidden" value="{{id}}" />
@@ -164,18 +168,105 @@ body {
 						</div> <!--<button class="upload" id="bt-upload" style="WIDTH: 60pt; HEIGHT: 20pt;">직접주기</button>-->
 					</td>
 				</tr>
+
+
 				{{/couponUserList}}
 
 			</tbody>
 		</table>
 	</div>
+	<hr/>
+
+	<!-- 여기에 내용 새로나와용^^ -->
+
+		<div class="container">
+		<table class="table">
+			<thead>
+				<tr>
+
+					<th>아이디</th>
+					<th>이름</th>
+					<th>가입일자</th>
+					<th>쿠폰번호</th>
+					<th>시작일자</th>
+					<th>종료일자</th>
+					<th>할인가격</th>
+					<th>쿠폰사유</th>
+					<th>사용여부</th>
+
+				</tr>
+				</thead>
+				<tbody id="ajax">
+
+
+
+
+
+							</tbody>
+				</table>
+
+	</div>
+
+
+
+
 
 </body>
+
+
+<script>
+function ddd(e){
+	let data = {
+			userId:e
+	}
+	console.log('찍힌 아이디 = ',e);
+
+	$.ajax({
+		type: "PUT",
+		url: "/findCoupon/"+data.userId,
+		data: JSON.stringify(data),
+		contentType: "application/json; charset=utf-8",
+		dataType: "JSON"
+
+	}).done(function(resp){
+	console.log('성공한 내용 =',resp)
+		$("#ajax").empty();
+		for(var data of resp){
+			var input_html =
+
+
+				"				<tr   class=\"info\">\r\n" +
+				"					<td>"+data.username+"</td>\r\n" +
+				"					<td>"+data.name+"</td>\r\n" +
+				"					<td>"+data.createDate+"</td>\r\n" +
+				"					<td>"+data.code+"</td>\r\n" +
+				"					<td>"+data.validityStart+"</td>\r\n" +
+				"					<td>"+data.validityEnd+"</td>\r\n" +
+				"					<td>"+data.salePrice+"</td>\r\n" +
+				"					<td>"+data.reason+"</td>\r\n" +
+				"					<td>"+data.changeAvailability+"</td>\r\n" +
+				"					</tr>";
+
+				console.log(input_html);
+				$("#ajax").append(input_html);
+		}
+
+
+	}).fail(function(error){
+		alert(JSON.stringify(error));
+	});
+}
+
+
+</script>
+
+
+
+
 <script>
 function asdf(e){
 	console.log(e);
-	console.log($("#userId"+e).val(e));
-	$("#userId"+e).val(e);
+$(".userId").val(e);
 	return;
 }
 </script>

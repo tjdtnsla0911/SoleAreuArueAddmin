@@ -27,6 +27,17 @@ from coupon
 where userid=#{userid}
 </select>
 
+<update id="updateCoupon">
+update coupon set code =#{code} , validityStart=#{validityStart} , validityEnd=#{validityEnd},userid=#{userId}
+, availability=true ,availability= #{availability} ,reason =#{reason} where id=#{id}
+</update>
+
+<select id="findByCouponUserAndCoupon" resultType="com.aruerue.shop.addminDto.AddminCouponDto">
+select co.id,username,name,createDate,co.code,co.validityStart,co.validityEnd,co.salePrice,co.reason,us.id,co.availability
+from coupon co, user us
+where us.id= co.userid and us.id=#{userId}
+</select>
+
 
 
 </mapper>
