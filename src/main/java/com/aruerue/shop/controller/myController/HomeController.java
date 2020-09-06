@@ -20,7 +20,7 @@ import lombok.RequiredArgsConstructor;
 public class HomeController {
 	private final Repository repository;
 
-	@GetMapping({" ","/"})
+	@GetMapping({"","/"})
 	public HomeResponseDto home() {
 		List<HomeAdResoDto> homeAdResoDtos = repository.findHomeAd();
 		List<HomeNoticeRespDto> homeNoticeRespDtos = repository.findNotice();

@@ -40,7 +40,7 @@ public class CartController {
 	}
 	
 	// update 경로 추가
-	@PutMapping("/shop_cart/")
+	@PutMapping("/shop_cart")
 	public CommonRespDto<?> updateCart(@PathVariable Cart cart) {
 		System.out.println("updateCart: " + cart);
 		// 물품의 아이디값을 받으면 로그인된 유저의 id값을 찾아서 save
