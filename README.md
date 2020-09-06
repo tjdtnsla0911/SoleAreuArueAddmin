@@ -45,6 +45,8 @@ DROP TABLE related_product;
 DROP TABLE category;
 DROP TABLE cart;
 
+
+#수정된거 보고  바꾸세요
 CREATE TABLE product (
 	id int auto_increment primary key,
     title varchar(100) not null, #제목
@@ -71,7 +73,9 @@ CREATE TABLE review   (
     createDate timestamp,
     star int, #난 예전에 별개수를 int로 바꿔서 넣어서 일단 int로 했음
     img varchar(1500), #경로
+    existenceOfImg boolean, #이미지 올린놈인지아닌지
     orderId int #결제방법때문에필요
+   
 ) engine=InnoDB default charset=utf8;
 
 
@@ -92,7 +96,9 @@ CREATE TABLE user   (
     role varchar(150),
     cancel boolean, #취소 헷갈려서 varchar함 boolean 같은데.. 탈퇴 체크 같아서 boolean으로 바꿨다
     profile varchar(4500),
-    createDate timestamp
+    createDate timestamp,
+     totalPoint int # <--이놈이 추가됫음
+    
 ) engine=InnoDB default charset=utf8;
 
 CREATE TABLE recomment   (
@@ -140,6 +146,7 @@ CREATE TABLE orders_detail   (
     fee int #택배값 3000고정 할건데 뭐지
 ) engine=InnoDB default charset=utf8;
 
+
 CREATE TABLE wishlist   (
 	id int auto_increment primary key,
     userId  int,
@@ -152,8 +159,12 @@ CREATE TABLE coupon   (
     code   varchar(1000),
     validityStart  date, #쿠폰 입력가능시작 validity붙임
     validityEnd date,#쿠폰 끝나는 유효기간 validity붙임
-    availability boolean # boolean 으로해봄 유효성 헷갈림
+    availability boolean, # boolean 으로해봄 유효성 헷갈림
+    salePrice int, # <--새로추가된놈
+    reason varchar(2000) #<--역시새로 추가된놈
 ) engine=InnoDB default charset=utf8;
+
+
 
 CREATE TABLE point   (
 	id int auto_increment primary key,
@@ -161,7 +172,7 @@ CREATE TABLE point   (
     historyDate date, #date예약어라서 바꿈
     reason   varchar(500), #이유라서 varchar함
     point int,
-    totalPoint int
+    userTotalPoint int #<--total 포인트가 user로 가고 이게추가댐
 ) engine=InnoDB default charset=utf8;
 
 CREATE TABLE related_product   ( #관련상품
@@ -191,40 +202,15 @@ CREATE TABLE commentOnQnA   (
     comment   varchar(2000),
     createDate  timestamp
 ) engine=InnoDB default charset=utf8;
-```
-
-# join과 test를 위한 데이터
-
-```sql
-#user 더미 데이터
-insert into user(username,password,email,name,gender,phone,address,detail_address,birthday,total_amount,role,cancel,profile,provider,providerId,createDate)
-values('cos','cos1234','tjdtnsla0321@nate.com','최주호','남','010-2222-0000','부산광역시 진구','서면 파이널센터 4층','1985-02-01',120000,'ROLE_USER',false,'프로필입니다.','직접가입함','직접가입함',now());
-
-insert into user(username,password,email,name,gender,phone,address,detail_address,birthday,total_amount,role,cancel,profile,provider,providerId,createDate)
-values('tjdtn','tjdtn123','tjdd@nate.com','김성수','남','010-0000-0000','경북 포항시','북구 학잠동','1993-09-11',200000,'ROLE_USER',false,'프로필입니다.','직접가입함','직접가입함',now());
-
-insert into user(username,password,email,name,gender,phone,address,detail_address,birthday,total_amount,role,cancel,profile,provider,providerId,createDate)
-values('tjsgus','tjsgus123','tjsgus@nate.com','문선현','여','010-1111-1111','부산광역시 어딘가','남포동 아파트','1993-12-31',50000,'ROLE_USER',false,'프로필입니다.','직접가입함','직접가입함',now());
-
-insert into user(username,password,email,name,gender,phone,address,detail_address,birthday,total_amount,role,cancel,profile,provider,providerId,createDate)
-values('dnjswo','dnjswo1234','dnjswop321@nate.com','이원재','남','010-2322-7440','부산광역시 연산','연산역 집','1992-01-01',2000,'ROLE_USER',false,'프로필입니다.','직접가입함','직접가입함',now());
-
-#product 더미데이터
-insert into product(title,thumb,price,disc,ad,discounted,content,categoryId,bgImg, sale, newly, best)
-values ('프레시 런드리 디터전트','/img/item1_product.png',28000,'베이비 런드리 디터전트(무향)1L*1ea',true,27000,'content1',1,'/img/main2.jpg', true, false, false);
-insert into product(title,thumb,price,disc,ad,discounted,content,categoryId,bgImg, sale, newly, best)
-values ('패밀리 키친 세트','/img/item2_product.png',40000,'프레시 디시 앤 프루트 워시 (오렌지) 500ml * 1ea 베이비 보틀 앤 토이 워시 (무향) 500ml * 1ea',true,null,'content2',2,'/img/main2.jpg', false, true, false);
-insert into product(title,thumb,price,disc,ad,discounted,content,categoryId,bgImg, sale, newly, best)
-values ('기프트 세트','/img/item3_product.png',63000,'OPTION. 구성품 택1 (키친 세트,리빙케어 세트, 런드미 세트중) OPTION 2. 박스 색상 택1 (프레시 네이버,베이비 민트 중)',false,39000,'content3',2,'/img/main3.jpg', true, false, false);
 
 
 #review 더미데이터
-insert into review(productId, title, content, userId,createDate, star, img, orderId)
-values(1,'제목1입니다.', '너무비싸서 놀랫네요..',1,now(),5,'/img/home_review1.jpg',1);
-insert into review(productId, title, content, userId,createDate, star, img, orderId)
-values(2,'제목2입니다.','아르아르 믿을수가없다',2,now(),1,'/img/home_review2.jpg',1);
-insert into review(productId, title, content, userId,createDate, star, img, orderId)
-values(1,'제목3입니다.', '보통입니다',3,now(),3,'/img/home_review1.jpg',1);
+insert into review(productId,content,userId,createDate,star,img,existenceOfImg,orderId)
+values(1,'너무비싸서 놀랫네요..',1,now(),5,'/img/home_review1.jpg',true,1);
+insert into review(productId,content,userId,createDate,star,img,existenceOfImg,orderId)
+values(2,'아르아르 믿을수가없다',2,now(),1,'/img/home_review2.jpg',true,1);
+insert into review(productId,content,userId,createDate,star,img,existenceOfImg,orderId)
+values(1,'너무비싸서 놀랫네요..',3,now(),3,'/img/home_review1.jpg',true,1);
 
 #recomment 더미데이터
 insert into recomment(reviewId,comment,createDate)
@@ -288,12 +274,12 @@ insert into coupon(userId,code,validityStart,validityEnd,availability)
 values(3,'3333-2222-3333-4444',now(),DATE_ADD(now(), INTERVAL 1 MONTH),true);
 
 #point 더미데이터
-insert into point(userId,historyDate,reason,point,totalPoint)
-values(1,now(),'이벤트',2000,50000);
-insert into point(userId,historyDate,reason,point,totalPoint)
-values(2,now(),'OO행사',1500,20000);
-insert into point(userId,historyDate,reason,point,totalPoint)
-values(3,now(),'출금했으니까',-1000,5200);
+insert into point(userId,historyDate,reason,point)
+values(1,now(),'이벤트',2000);
+insert into point(userId,historyDate,reason,point)
+values(2,now(),'OO행사',1500);
+insert into point(userId,historyDate,reason,point)
+values(3,now(),'출금했으니까',-1000);
 
 #related_product 더미데이터
 insert into related_product(parentProductId,relatedProductId)
@@ -328,6 +314,19 @@ values (1, '네~!', now());
 
 INSERT INTO commentOnQnA(qnAId, comment, createDate)
 values (2, '비누에서 거품이 나는 건 정상입니다~!', now());
+
+insert into user(username,password,email,name,gender,phone,address,detail_address,birthday,total_amount,role,cancel,profile,provider,providerId,createDate)
+values('cos','cos1234','tjdtnsla0321@nate.com','최주호','남','010-2222-0000','부산광역시 진구','서면 파이널센터 4층','1985-02-01',120000,'ROLE_USER',false,'프로필입니다.','직접가입함','직접가입함',now());
+
+insert into user(username,password,email,name,gender,phone,address,detail_address,birthday,total_amount,role,cancel,profile,provider,providerId,createDate)
+values('tjdtn','tjdtn123','tjdd@nate.com','김성수','남','010-0000-0000','경북 포항시','북구 학잠동','1993-09-11',200000,'ROLE_USER',false,'프로필입니다.','직접가입함','직접가입함',now());
+
+insert into user(username,password,email,name,gender,phone,address,detail_address,birthday,total_amount,role,cancel,profile,provider,providerId,createDate)
+values('tjsgus','tjsgus123','tjsgus@nate.com','문선현','여','010-1111-1111','부산광역시 어딘가','남포동 아파트','1993-12-31',50000,'ROLE_USER',false,'프로필입니다.','직접가입함','직접가입함',now());
+
+insert into user(username,password,email,name,gender,phone,address,detail_address,birthday,total_amount,role,cancel,profile,provider,providerId,createDate)
+values('dnjswo','dnjswo1234','dnjswop321@nate.com','이원재','남','010-2322-7440','부산광역시 연산','연산역 집','1992-01-01',2000,'ROLE_USER',false,'프로필입니다.','직접가입함','직접가입함',now());
+
 
 ```
 
