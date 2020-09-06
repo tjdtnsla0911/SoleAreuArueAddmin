@@ -25,7 +25,7 @@ public class MyPageController {
 
 	private final MyPageRepository myPageRepository;
 
-	@PostMapping("/shop_mypage/{userId}/order")
+	@PostMapping("/shop_mypage/order/{userId}")
 	public List<MypageOrdersResponseDto> mypageOrder(@PathVariable int userId) {
 		List<MypageOrdersResponseDto> mypageOrdersResponseDto = (List<MypageOrdersResponseDto>) myPageRepository
 				.findOrdersById(userId);
@@ -41,33 +41,34 @@ public class MyPageController {
 //	 return new CommonRespDto<String>();
 //	 }
 
-	@PostMapping("/shop_mypage/{userId}/cancle")
-	public String mypageCancle(@PathVariable int userId) {
+	@PostMapping("/shop_mypage/cancle{userId}")
+	public List<MypageCancleRespDto> mypageCancle(@PathVariable int userId) {
 		List<MypageCancleRespDto> mypageCancleRespDto = (List<MypageCancleRespDto>) myPageRepository
 				.findCancleById(userId);
-		return mypageCancleRespDto + "마이페이지  취소/교환/반품 화면 입니다.";
+		return mypageCancleRespDto;
 	}
 
-	@PostMapping("/shop_mypage/{userId}/coupon")
-	public String mypageCoupon(@PathVariable int userId) {
+	@PostMapping("/shop_mypage/coupon/{userId}")
+	public List<MypageCouponRespDto> mypageCoupon(@PathVariable int userId) {
 		List<MypageCouponRespDto> mypageCouponRespDto = (List<MypageCouponRespDto>) myPageRepository
 				.findCouponById(userId);
-		return mypageCouponRespDto + "마이페이지 쿠폰화면 입니다.";
+		return mypageCouponRespDto;
 	}
 
-	@PostMapping("/shop_mypage/{userId}/point")
+	@PostMapping("/shop_mypage/point/{userId}")
 	public List<MypagePointRespDto> mypagePoint(@PathVariable int userId) {
 		List<MypagePointRespDto> mypagePointRespDto = (List<MypagePointRespDto>) myPageRepository.findPointById(userId);
+		System.out.println(mypagePointRespDto.toString());
 		return mypagePointRespDto;
 	}
 
-	@PostMapping("/shop_mypage/{userId}/update")
+	@PostMapping("/shop_mypage/update/{userId}")
 	public MypageUpdateRespDto mypageUpdate(@PathVariable int userId) {
 		MypageUpdateRespDto mypageUpdateRespDto = myPageRepository.findUserById(userId);
 		return mypageUpdateRespDto;
 	}
 
-	@PostMapping("/shop_mypage/{userId}/withdrawal")
+	@PostMapping("/shop_mypage/withdrawal/{userId}")
 	public CommonRespDto<?> mypageWithdrawal(@PathVariable int userId) {
 		myPageRepository.deleteByid(userId);
 		if (myPageRepository.findUserById(userId) == null) {

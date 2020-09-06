@@ -24,9 +24,9 @@ public class NoticeController {
 		return noticeRespDto;
 	}
 
-	@GetMapping("/notice_detail/{id}")
-	public List<NoticeDetailsRespDto> notice_detail(@PathVariable int id) {
-		List<NoticeDetailsRespDto> noticeDetailsRespDto = repository.findNoticeById(id);
+	@GetMapping("/notice_detail/{noticeId}")
+	public List<NoticeDetailsRespDto> notice_detail(@PathVariable int noticeId) {
+		List<NoticeDetailsRespDto> noticeDetailsRespDto = repository.findNoticeById(noticeId);
 		return noticeDetailsRespDto;
 	}
 }

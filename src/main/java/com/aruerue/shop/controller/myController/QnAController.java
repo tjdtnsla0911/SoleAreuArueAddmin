@@ -29,9 +29,9 @@ public class QnAController {
 		List<QnARespDto> qnARespDto = repository.findQnAs();
 		return qnARespDto;
 	}
-	@GetMapping("/qna_detail/{id}")
-	public CommentOnQnARespDto qnaDetail(@PathVariable int id) {
-		CommentOnQnARespDto mypageQnaDetailRespDto = repository.findQnADetailById(id);
+	@GetMapping("/qna_detail/{qnaId}")
+	public CommentOnQnARespDto qnaDetail(@PathVariable int qnaId) {
+		CommentOnQnARespDto mypageQnaDetailRespDto = repository.findQnADetailById(qnaId);
 		return mypageQnaDetailRespDto;
 	}
 	//insert
@@ -52,10 +52,10 @@ public class QnAController {
 		}
 
 	//delete
-	@DeleteMapping("/qna/{id}")
-	public CommonRespDto<?> deleteQna(@PathVariable int id){
-		System.out.println(" id : "+ id);
-		repository.deleteQna(id);
+	@DeleteMapping("/qna/{qnaId}")
+	public CommonRespDto<?> deleteQna(@PathVariable int qnaId){
+		System.out.println(" id : "+ qnaId);
+		repository.deleteQna(qnaId);
 	
 		return new CommonRespDto<String>();
 	}
