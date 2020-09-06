@@ -13,7 +13,7 @@ import com.aruerue.shop.controller.dto.mypage.MypageCancleRespDto;
 import com.aruerue.shop.controller.dto.mypage.MypageCouponRespDto;
 import com.aruerue.shop.controller.dto.mypage.MypageOrdersResponseDto;
 import com.aruerue.shop.controller.dto.mypage.MypagePointRespDto;
-
+import com.aruerue.shop.controller.dto.mypage.MypageQnaRespDto;
 import com.aruerue.shop.controller.dto.mypage.MypageUpdateRespDto;
 import com.aruerue.shop.repository.MyPageRepository;
 
@@ -41,7 +41,7 @@ public class MyPageController {
 //	 return new CommonRespDto<String>();
 //	 }
 
-	@PostMapping("/shop_mypage/cancle{userId}")
+	@PostMapping("/shop_mypage/cancle/{userId}")
 	public List<MypageCancleRespDto> mypageCancle(@PathVariable int userId) {
 		List<MypageCancleRespDto> mypageCancleRespDto = (List<MypageCancleRespDto>) myPageRepository
 				.findCancleById(userId);
@@ -60,6 +60,12 @@ public class MyPageController {
 		List<MypagePointRespDto> mypagePointRespDto = (List<MypagePointRespDto>) myPageRepository.findPointById(userId);
 		System.out.println(mypagePointRespDto.toString());
 		return mypagePointRespDto;
+	}
+	
+	@PostMapping("/shop_mypage/qna/{userId}")
+	public List<MypageQnaRespDto> mypageQnA(@PathVariable int userId) {
+		List<MypageQnaRespDto> mypageQnaRespDto = (List<MypageQnaRespDto>) myPageRepository.findQnaById(userId);
+		return mypageQnaRespDto;
 	}
 
 	@PostMapping("/shop_mypage/update/{userId}")
