@@ -57,7 +57,6 @@ public class AddminProductController {
 		System.out.println("list에 왔습니다.");
 		String http = "http://localhost:8080";
 		List<Product> lists = addminRepository.productList();
-
 		for( int i=0; i<=lists.size()-1;i++) {
 
 			if(lists.get(i).isNewly() == false) {

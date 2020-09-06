@@ -4,13 +4,13 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.aruerue.shop.repository.AddminCouponRepository">
 <select id="findAllCouponList" resultType="com.aruerue.shop.addminDto.AddminCouponDto">
-select us.id,gender,name,username,address,detail_address,createDate,count(co.id) as "whatCoupons",co.salePrice,co.reason
+select co.userid,gender,name,username,address,detail_address,createDate,count(co.id) as "whatCoupons"
 from coupon co, user us
 where us.id= co.userid
 group by us.id;
 </select>
 <select id="findCount" resultType="com.aruerue.shop.addminDto.AddminCouponDto">
-select us.id,gender,name,username,address,detail_address,createDate,count(co.id) as "whatCoupons",co.salePrice,co.reason
+select co.id,gender,name,username,address,detail_address,createDate,count(co.id) as "whatCoupons",co.salePrice,co.reason
 from coupon co, user us
 where us.id= co.userid
 group by us.id
@@ -26,6 +26,18 @@ select *
 from coupon
 where userid=#{userid}
 </select>
+
+<update id="updateCoupon">
+update coupon set code =#{code} , validityStart=#{validityStart} , validityEnd=#{validityEnd},userid=#{userId}
+, availability=true ,availability= #{availability} ,reason =#{reason} where id=#{id}
+</update>
+
+<select id="findByCouponUserAndCoupon" resultType="com.aruerue.shop.addminDto.AddminCouponDto">
+select co.id,username,name,createDate,co.code,co.validityStart,co.validityEnd,co.salePrice,co.reason,us.id,co.availability
+from coupon co, user us
+where us.id= co.userid and us.id=#{userId}
+</select>
+
 
 
 </mapper>
