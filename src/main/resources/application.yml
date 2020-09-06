@@ -13,8 +13,7 @@ spring:
     username: cos
     password: cos1234
     
-    # username: areuareu
-    #password: bitc5600
+
   servlet:
     multipart:
       enabled: true

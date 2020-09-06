@@ -22,11 +22,23 @@ body {
 </style>
 </head>
 <body>
-<button onclick="replay()">새로고침</button><button onclick="related()">관련상품</button><button onclick="back()">상품등록</button>	<button onclick="goUserList()">유저페이지</button>
+<button onclick="replay()">새로고침</button><button onclick="back()">상품등록</button>	<button onclick="goUserList()">유저페이지</button>
 <button onclick="QnaList()">QnaList</button><button onclick="order()">상품관리</button>
 <button onclick="noticse()">Notice</button>
+<br/><button onclick="point()">포인트</button><button onclick="coupon()">쿠폰리스트</button>
+<button onclick="orders()">오더리스트</button>
+
 
 <script>
+function orders(){
+	location.href="/orders";
+}
+function coupon(){
+	location.href="/AddminCouponList";
+}
+function point(){
+	location.href="/pointList";
+}
 function noticse(){
 	location.href="/noticelist";
 }

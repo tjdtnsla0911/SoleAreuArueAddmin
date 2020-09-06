@@ -54,9 +54,18 @@ public class JwtCreateController {
 		System.out.println("------------------------------------------------------------");
 		System.out.println("googleUser.getProvider() = "+commonUser.getProvider());
 		System.out.println("googleUser.getProviderId() = "+commonUser.getProviderId());
-		User userEntity =
-				userRepository.findByUsername(commonUser.getName());
-		System.out.println("controller.JwtCreateController.java의 jwtCreate의 userEntity = "+userEntity);
+		System.out.println("googleUser.패스워드() = "+commonUser.getPassword());
+		System.out.println(commonUser);
+
+		System.out.println("여기까진왔나? ");
+		System.out.println("commonUser.getName() = "+commonUser.getName());
+		System.out.println("commonUser = ");
+	
+//	
+//		User userEntity =
+//				userRepository.findByUsername(commonUser.getName());
+		User userEntity = userRepository.findByUsernameAndPassword(commonUser.getName(),commonUser.getPassword());
+//		System.out.println("controller.JwtCreateController.java의 jwtCreate의 userEntity = "+userEntity);
 
 
 
