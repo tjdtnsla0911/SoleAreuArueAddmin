@@ -9,7 +9,6 @@ import com.aruerue.shop.model.user.User;
 
 public interface UserRepository{
 	User findByUsername(String name);
-	User findByUsernameAndPassword(String name,String password);
 	List<User> findAll();
 	public User saveGoogle(User user);
 	public void save(User user);

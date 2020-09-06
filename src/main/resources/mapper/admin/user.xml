@@ -29,19 +29,13 @@
 		WHERE username = #{username} AND password = #{password}
 	</select>
 
-	<select id="findByUsernameAndPassword"
-		resultType="com.aruerue.shop.model.user.User">
-		SELECT *
-		FROM user
-		WHERE username = #{name} and password=#{password}
-	</select>
 
 	
 		<select id="findByUsername"
 		resultType="com.aruerue.shop.model.user.User">
 		SELECT *
 		FROM user
-		WHERE username = #{여기에 뭘적어도 잘나옴}
+		WHERE username = #{여기에 뭘적어도 잘나옴 대한민국 만만세 ㅅㅂ 코딩 뻐큐}
 	</select>
 
 	<!-- -->
