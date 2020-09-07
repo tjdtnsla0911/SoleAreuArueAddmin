@@ -29,7 +29,7 @@ public class CartController {
 	private final Repository repository;
 	
 	// 해당 유저의 쇼핑카트 보기 GET->POST
-	@PostMapping("/user/shop_cart/{userId}")
+	@PostMapping("shop_cart/{userId}")
 	public List<CartRespDto> cart(@AuthenticationPrincipal PrincipalDetails principalDetails ,@PathVariable int userId) {
 
 		if(principalDetails.getUser().getId() ==userId) { //여기서 토큰에있는 id랑 받은 id가 같다면 진행

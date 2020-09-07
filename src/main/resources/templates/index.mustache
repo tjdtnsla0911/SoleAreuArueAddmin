@@ -9,47 +9,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
 </head>
-
-
-<button onclick="coupon()">새로고침</button><button onclick="back()">유저리스트</button>	<button onclick="goUserList()">쿠폰리스트</button>
-<button onclick="QnaList()">QnaList</button>
-<button onclick="noticse()">Notice</button>
-<br/><button onclick="point()">포인트</button><button onclick="replay()">상품리스트</button>
-<button onclick="orders()">오더리스트</button>
-
-
-<script>
-function orders(){
-	location.href="/orders";
-}
-function coupon(){
-	location.href="/axios";
-}
-function point(){
-	location.href="/pointList";
-}
-function noticse(){
-	location.href="/noticelist";
-}
-function order(){
-	location.href="/orders";
-}
-function QnaList(){
-	location.href="/addqna";
-}
-function goUserList(){
-	location.href="/AddminCouponList";
-}
-function back(){
-	location.href="/userlist";
-}
-function related(){
-location.href="/relatedProducts";
-}
-function replay(){
-	location.href="/list";
-}
-</script>
+{{>./header}}
 <body onload="init();">
 
 	<h1>관리자 페이지입니다.</h1>
