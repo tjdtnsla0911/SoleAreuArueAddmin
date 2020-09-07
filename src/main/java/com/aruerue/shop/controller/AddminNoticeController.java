@@ -55,7 +55,9 @@ public class AddminNoticeController {
 		System.out.println("받은 id="+id);
 		//System.out.println("받은 id = ?"+id);
 
+
 		Notice notice = addminNoticeRepository.findSelectnotice(id); //본문내용
+		addminNoticeRepository.updateSelectNotice(notice);
 
 		return notice;
 

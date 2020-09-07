@@ -28,7 +28,7 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequiredArgsConstructor
 public class JwtCreateController {
-	
+
 	@Autowired
 	BCryptPasswordEncoder passwordEncoder;
 
@@ -66,12 +66,14 @@ public class JwtCreateController {
 		System.out.println("commonUser.getName() = "+commonUser.getName());
 		System.out.println("commonUser = ");
 
-//	
+//
 		User userEntity =
 				userRepository.findByUsername(commonUser.getName());
 	//	User userEntity = userRepository.findByUsernameAndPassword(commonUser.getName(),commonUser.getPassword());
 //		System.out.println("controller.JwtCreateController.java의 jwtCreate의 userEntity = "+userEntity);
+
 		if(passwordEncoder.matches(commonUser.getPassword(), userEntity.getPassword())){
+
 			System.out.println("비번일치");
 			String jwtToken = JWT.create()
 					.withSubject(userEntity.getUsername())
@@ -82,13 +84,13 @@ public class JwtCreateController {
 			System.out.println("controller.JwtCreateController.java의 jwtCreate의 jwtToken = "+jwtToken);
 
 			return jwtToken;
-		
-			
+
+
 		}else {
 			System.out.println("비번불일치");
-			return "안녕";
+			return "아이디 혹은 패스워드가 일치하지않습니다";
 		}
-		
+
 	}
 
 

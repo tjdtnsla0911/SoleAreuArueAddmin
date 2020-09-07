@@ -26,6 +26,6 @@ spring:
     cache: false 
   
 file:
-  path: C:/Users/82105/Desktop/gitbut/aruerue-back/src/main/resources/static/images/
+  path: #C:/Users/admin/Desktop/gitpro/aruerue-back/src/main/resources/static/images/
 
   

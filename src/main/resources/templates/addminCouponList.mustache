@@ -49,13 +49,17 @@ body {
 </head>
 <body>
 <button onclick="coupon()">새로고침</button><button onclick="back()">상품등록</button>	<button onclick="goUserList()">유저페이지</button>
-<button onclick="QnaList()">QnaList</button><button onclick="order()">상품관리</button>
+<button onclick="QnaList()">QnaList</button>
 <button onclick="noticse()">Notice</button>
 <br/><button onclick="point()">포인트</button><button onclick="replay()">상품리스트</button>
 <button onclick="orders()">오더리스트</button>
+<button onclick="addminReviewList()">리뷰리스트</button>
 
 
 <script>
+function addminReviewList(){
+	location.href="/addminReviewList";
+}
 function orders(){
 	location.href="/orders";
 }

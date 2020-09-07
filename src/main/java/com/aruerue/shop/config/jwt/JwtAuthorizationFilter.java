@@ -70,9 +70,11 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 			// 강제로 시큐리티의 세션에 접근하여 값 저장
 			System.err.println("jwt.JwtAuthorizationFilter.java의 doFilterInternal의 authentication = "+authentication);
 			SecurityContextHolder.getContext().setAuthentication(authentication);
+
 		}
 		System.err.println("jwt.JwtAuthorizationFilter.java의 doFilterInternal가 끝났습니다 " );
 		chain.doFilter(request, response);
 	}
+
 
 }

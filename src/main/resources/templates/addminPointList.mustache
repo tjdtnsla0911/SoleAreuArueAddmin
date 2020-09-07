@@ -10,6 +10,50 @@
 </head>
 <body>
 
+<button onclick="coupon()">새로고침</button><button onclick="back()">유저리스트</button>	<button onclick="goUserList()">쿠폰리스트</button>
+<button onclick="QnaList()">QnaList</button>
+<button onclick="noticse()">Notice</button>
+<br/><button onclick="point()">상품등록</button><button onclick="replay()">상품리스트</button>
+<button onclick="orders()">오더리스트</button>
+<button onclick="addminReviewList()">리뷰리스트</button>
+
+
+<script>
+function addminReviewList(){
+	location.href="/addminReviewList";
+}
+function orders(){
+	location.href="/orders";
+}
+function coupon(){
+	location.href="/pointList";
+}
+function point(){
+	location.href="/axios";
+}
+function noticse(){
+	location.href="/noticelist";
+}
+function order(){
+	location.href="/orders";
+}
+function QnaList(){
+	location.href="/addqna";
+}
+function goUserList(){
+	location.href="/AddminCouponList";
+}
+function back(){
+	location.href="/userlist";
+}
+function related(){
+location.href="/relatedProducts";
+}
+function replay(){
+	location.href="/list";
+}
+</script>
+
 <div class="container">
   <h2>관리자 포인트 페이지</h2>
   <p>유저들의 포인트 현황입니다</p>

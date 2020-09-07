@@ -12,8 +12,13 @@
 <body>
 <button onclick="replay()">전체상품</button><button onclick="related()">관련상품</button><button onclick="back()">상품등록</button>	<button onclick="goUserList()">유저페이지</button>
 <button onclick="QnaList()">QnaList</button><button onclick="order()">새로고침</button>
+<button onclick="addminReviewList()">리뷰리스트</button>
+
 
 <script>
+function addminReviewList(){
+	location.href="/addminReviewList";
+}
 function order(){
 	location.href="/orders";
 }

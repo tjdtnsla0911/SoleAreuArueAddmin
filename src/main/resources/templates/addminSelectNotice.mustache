@@ -9,6 +9,13 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
+<button onclick="back()">뒤로가기</button>
+<script>
+function back(){
+location.href="/noticelist"
+}
+</script>
+<br/><br/>
 {{#notice}}
 
 <input type="hidden" id="id" name="id" value="{{id}}">
@@ -65,21 +72,21 @@
 
 
 					<br />
-					
+
 					<input type="hidden" id="id{{id}}" name="id" class="id" value="{{id}}"/>
 					<input type="hideen" id="nullCheck{{id}}" name="nullCheck" class="nullCheck" value="null"/><br/><br/>
 				제목 :<input type="text" id="title{{id}}" name="title" class="title" placeholder="제목을 적으세요"/><br/><br/>
 				내용 :<input type="text" id="content{{id}}" name="content" class="content" placeholder="제목을 적으세요"/><br/><br/>
 					<input type="file" id="thumb{{id}}" name="thumb" class="thumb"/><br /><br/>
-						
+
 						<div class="img_wrap">
 					<img id="test" class="test" src="" style="height: 200px" width="200px" />
 						</div>
 						</div>
 						<div class="modal-footer">
-						
+
 							<button class="btn-update" id="bt-update-{{id}}" style="WIDTH: 60pt; HEIGHT: 20pt">수정하기</button> <br />
-						
+
 							<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
 						</div>
 					</div>
@@ -100,18 +107,18 @@ this.update(e);
 },
 
 
-	
+
 	update: function(e){
 		console.log('e = ',e);
-		
+
 		var temp = (e.target.id).replace("bt-update-","");
 
 		var data2 = {
 				id: temp
 		};
-		
+
 		console.log(data2.id);
-		
+
 		var formData = new FormData();
 		formData.append('id',$('#id'+data2.id).val());
 		formData.append('title',$('#title'+data2.id).val());
@@ -133,8 +140,8 @@ this.update(e);
 			alert(JSON.stringify(error));
 		});
 	},
-	
-	
+
+
 }
 
 index.init();
@@ -156,10 +163,10 @@ function deletes(id){
 	}).done(function(resp){
 
 		console.log(resp);
-	
+
 		alert('성공');
         location.href = '/noticelist';
-	
+
 
 	}).fail(function(error){
 		alert(JSON.stringify(error));

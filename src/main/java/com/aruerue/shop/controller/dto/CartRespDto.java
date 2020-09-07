@@ -20,4 +20,5 @@ public class CartRespDto {
 	private String title;
 	private String quantity;
 	private int price;
+	private int totalPrice;
 }

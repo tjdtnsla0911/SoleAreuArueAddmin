@@ -49,8 +49,46 @@ body {
 
 </head>
 <body>
+<button onclick="coupon()">새로고침</button><button onclick="back()">상품등록</button>	<button onclick="goUserList()">쿠폰리스트</button>
+<button onclick="QnaList()">QnaList</button>
+<button onclick="noticse()">Notice</button>
+<br/><button onclick="point()">포인트</button><button onclick="replay()">상품리스트</button>
+<button onclick="orders()">오더리스트</button>
+<button onclick="addminReviewList()">유저리스트</button>
 
 
+<script>
+function addminReviewList(){
+	location.href="/userlist";
+}
+function orders(){
+	location.href="/orders";
+}
+function coupon(){
+	location.href="/addminWatingAnswser";
+}
+function point(){
+	location.href="/pointList";
+}
+function noticse(){
+	location.href="/noticelist";
+}
+function order(){
+	location.href="/orders";
+}
+function QnaList(){
+	location.href="/addqna";
+}
+function goUserList(){
+	location.href="/AddminCouponList";
+}
+function back(){
+	location.href="/axios";
+}
+function related(){
+location.href="/relatedProducts";
+}
+</script>
 
 
 
@@ -78,36 +116,36 @@ body {
         <td>{{createDate}}</td>
         <td><span style="color: red;">{{realStar}}</span></td>
       </tr>
-      
-      
+
+
 	<div class="modal">
 		<div class="modal-content">
 			<span class="close">&times;</span>
 			<span style="color: red;">{{realStar}}</span><br/>
 			<span style="color: gray;">{{username}}&nbsp&nbsp{{createDate}}</span>
-			<br/>		
+			<br/>
 			<hr />
 			<br/>
 			<img src="{{img}}" style="width: 500px; height: 250px;"/><br/><br/>
 			{{content}}
 			<br/><br/>
-	
+
 			<img alt="X" src="{{thumb}}" style="width: 40px; height: 50px;">
 			{{title}}<br/><br/>
 			<form action="/addminReviewAnswer" method="post">
-			<input type="hidden" id="id" value="{{id}}" name="id"/> 
+			<input type="hidden" id="id" value="{{id}}" name="id"/>
 			<input type="text" style=" width:500px; height:150px;" id="comment" name="comment"/>
 			<input type="submit" value="답하기"/>
 			</form>
-			
+
 
 		</div>
 	</div>
-      
+
           {{/notReivew}}
 
     </tbody>
-          
+
   </table>
       {{^notReview}}
       <br/>
