@@ -23,4 +23,4 @@ spring:
     cache: false 
   
 file:
-  path: C:/Users/admin/Desktop/projectPull/aruerue-back/src/main/resources/static/images/
+  path: C:/Users/admin/Desktop/projectPull/aruerue-back/src/main/resources/static/img/
