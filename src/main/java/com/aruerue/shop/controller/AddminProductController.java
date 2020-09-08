@@ -57,7 +57,6 @@ public class AddminProductController {
 		System.out.println("list에 왔습니다.");
 		String http = "http://localhost:8080";
 		List<Product> lists = addminRepository.productList();
-
 		for( int i=0; i<=lists.size()-1;i++) {
 
 			if(lists.get(i).isNewly() == false) {
@@ -71,7 +70,6 @@ public class AddminProductController {
 			}else {
 				lists.get(i).setSale2("세일중입니다.");
 			}
-
 			if(lists.get(i).isBest() == false) {
 				lists.get(i).setBest2("베스트가 아닙니다");
 			}else {
@@ -97,7 +95,6 @@ public class AddminProductController {
 			lists.get(i).setThumb(http2);
 
 			System.out.println("썸네일 = "+lists.get(i).getThumb());
-
 			//System.out.println(lists.get(i).setBgImg(http+lists.get(i).getBgImg()));
 
 			}

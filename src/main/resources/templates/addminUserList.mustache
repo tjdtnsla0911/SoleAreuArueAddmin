@@ -10,31 +10,7 @@
 </head>
 <title>Bootstrap Example</title>
 <body>
-	<button onclick="replay()">새로고침</button>
-	<button onclick="related()">관련상품</button>
-	<button onclick="back()">전체상품</button>
-	<button onclick="crud()">상품등록</button>
-	<button onclick="addqna()">QnaList</button>
-	<script>
-		function addqna(){
-			location.href="/addqna";
-		}
-
-		function crud(){
-			location.href="/axios";
-		}
-
-		function replay() {
-			location.href = "/userlist";
-		}
-		function back() {
-			location.href = "/list";
-		}
-		function related() {
-			location.href = "/relatedProducts";
-		}
-	</script>
-
+{{>./header}}
 	<div class="container">
 		<h2>관리자 페이지</h2>
 		<h6>유저 정보를 출력합시다</h6>

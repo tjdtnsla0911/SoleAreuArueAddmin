@@ -14,6 +14,7 @@ public class CommonUser implements OAuthUserInfo{
 	@Override
 	public String getProviderId() {
 		System.out.println("oauth.provider.CommonUser.java의 getProviderId에 왔습니다 ");
+		
 		return (String)attribute.get("username");
 	}
 
@@ -27,7 +28,7 @@ public class CommonUser implements OAuthUserInfo{
 	@Override
 	public String getEmail() {
 		System.out.println("oauth.provider.CommonUser.java의getEmail에 왔습니다 ");
-
+		
 		return (String)attribute.get("email");
 	}
 

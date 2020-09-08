@@ -26,9 +26,28 @@
 </select>
 
 <insert id="saveReview" >
+<<<<<<< HEAD
 INSERT INTO review(productId, title, content, userId, createDate, star, img, orderId)
 VALUES (#{productId}, #{title}, #{content}, #{userId}, #{createDate}, #{star}, #{img}, #{orderId});
 </insert>
 
+=======
+ INSERT INTO review(productId, title, content, userId, createDate, star, img, orderId)
+ VALUES (#{productId}, #{title}, #{content}, #{userId}, #{createDate}, #{star}, #{img}, #{orderId});
+</insert>
+
+<update id="updateReview">
+  UPDATE review SET 
+ content = #{content},
+ title = #{title},
+ star = #{star},
+ img = #{img},
+ WHERE id = #{id};
+</update>
+
+<delete id="deleteReview">
+ DELETE FROM review WHERE id = #{id};
+</delete>
+>>>>>>> ce860e50dee10437888782a68a9eb802f68b97be
 
 </mapper>

@@ -4,16 +4,24 @@ import java.util.ArrayList;
 import java.util.Collection;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.aruerue.shop.model.user.User;
+
+import lombok.Data;
 
 public class PrincipalDetails implements UserDetails{
 
 	private User user;
 
+
     public PrincipalDetails(User user){
+
     	System.out.println("auth.PrincipalDetails의 user = "+user);
+
         this.user = user;
+
+
     }
 
     public User getUser() {
@@ -23,7 +31,7 @@ public class PrincipalDetails implements UserDetails{
 
     @Override
     public String getPassword() {
-//    	System.out.println("auth.PrincipalDetails의getPassword의  user.getPassword() = "+user.getPassword());
+    	System.out.println("auth.PrincipalDetails의getPassword의  user.getPassword() = "+user.getPassword());
         return user.getPassword();
     }
 

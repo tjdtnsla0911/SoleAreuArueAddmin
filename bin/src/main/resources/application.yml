@@ -23,4 +23,8 @@ spring:
     cache: false 
   
 file:
+<<<<<<< HEAD
   path: C:/Users/admin/Desktop/projectPull/aruerue-back/src/main/resources/static/images/
+=======
+  path: C:/Users/admin/Desktop/gitclone2/spring-test9/main/resources/static/images/
+>>>>>>> ce860e50dee10437888782a68a9eb802f68b97be

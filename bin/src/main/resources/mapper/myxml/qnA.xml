@@ -21,4 +21,26 @@
 	WHERE q.id=#{id};
 </select>
 
+<<<<<<< HEAD
+=======
+<insert id="saveQnA" >
+	INSERT INTO qna (title, content, createDate, userId, productId)
+ 	VALUES (#{title}, #{content}, #{createDate}, #{userId}, #{productId});
+</insert>
+<!-- 혹시 오류나면 answer도 insert하기 -->
+
+
+<update id="updateQna">
+  UPDATE qna SET  
+ title = #{title},
+ content = #{content}
+ WHERE id = #{id};
+</update>
+
+<delete id="deleteQna">
+ DELETE FROM qna WHERE id = #{id};
+</delete>
+
+
+>>>>>>> ce860e50dee10437888782a68a9eb802f68b97be
 </mapper>

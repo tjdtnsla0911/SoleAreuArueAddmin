@@ -8,7 +8,7 @@ import com.aruerue.shop.controller.dto.ProductDto;
 import com.aruerue.shop.model.user.User;
 
 public interface UserRepository{
-	User findByUsername(String username);
+	User findByUsername(String name);
 	List<User> findAll();
 	public User saveGoogle(User user);
 	public void save(User user);

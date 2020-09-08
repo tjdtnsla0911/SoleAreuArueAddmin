@@ -18,5 +18,5 @@ private int userId;
 private Date historyDate;
 private String reason;
 private int point;
-private int totalPoint;
+private int userTotalPoint;
 }

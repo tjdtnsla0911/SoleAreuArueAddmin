@@ -25,4 +25,6 @@ public class PrincipalDetailsService implements UserDetailsService{
 		// session.setAttribute("loginUser", user);
 		return new PrincipalDetails(user);
 	}
+	
+
 }

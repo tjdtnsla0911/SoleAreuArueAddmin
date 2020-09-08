@@ -20,7 +20,7 @@
 </select>
 
 <select id="findReviewsForHome" resultType="com.aruerue.shop.controller.dto.home.HomeReviewRespDto">
-	SELECT r.content, p.title, p.id, u.username ,r.img
+	SELECT r.content, p.title, p.id, u.username, r.img
 	FROM review r LEFT OUTER JOIN user u
 	ON r.userId = u.id
 	LEFT OUTER JOIN product p

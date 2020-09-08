@@ -328,7 +328,8 @@ this.ViewDetails(e);
 						"\r\n" +
 						"      </div>";
 
-					console.log(input_html);
+					
+					
 					$("#detail").append(input_html);
 
 

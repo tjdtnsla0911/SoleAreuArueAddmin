@@ -5,11 +5,19 @@
 <mapper namespace="com.aruerue.shop.repository.Repository">
 
 <select id="findCartsById" resultType="com.aruerue.shop.controller.dto.CartRespDto">
-	SELECT p.id, p.title, c.quantity, p.price
+SELECT p.id, p.title, c.quantity, p.price,c.quantity*p.price as "totalPrice"
 	FROM cart c INNER JOIN product p INNER JOIN user u
-	ON c.userId = u.id AND p.id = c.productId
-	WHERE u.id = #{id};
+	ON c.userId = u.id AND p.id = c.productId and u.id =#{id}
 </select>
+
+<insert id="saveCart" >
+	INSERT INTO cart (productId, userId, quantity, price)
+ 	VALUES (#{productId}, #{userId}, 1, #{price});
+</insert>
+
+<delete id="deleteCart">
+ DELETE FROM cart WHERE id = #{id};
+</delete>
 
 
 

@@ -4,7 +4,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,6 +28,9 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequiredArgsConstructor
 public class JwtCreateController {
+
+	@Autowired
+	BCryptPasswordEncoder passwordEncoder;
 
 	private final UserRepository userRepository;
 	private final UserService userService;
@@ -54,51 +59,38 @@ public class JwtCreateController {
 		System.out.println("------------------------------------------------------------");
 		System.out.println("googleUser.getProvider() = "+commonUser.getProvider());
 		System.out.println("googleUser.getProviderId() = "+commonUser.getProviderId());
+		System.out.println("googleUser.패스워드() = "+commonUser.getPassword());
+		System.out.println(commonUser);
+
+		System.out.println("여기까진왔나? ");
+		System.out.println("commonUser.getName() = "+commonUser.getName());
+		System.out.println("commonUser = ");
+
+//
 		User userEntity =
 				userRepository.findByUsername(commonUser.getName());
-		System.out.println("controller.JwtCreateController.java의 jwtCreate의 userEntity = "+userEntity);
+	//	User userEntity = userRepository.findByUsernameAndPassword(commonUser.getName(),commonUser.getPassword());
+//		System.out.println("controller.JwtCreateController.java의 jwtCreate의 userEntity = "+userEntity);
+
+		if(passwordEncoder.matches(commonUser.getPassword(), userEntity.getPassword())){
+
+			System.out.println("비번일치");
+			String jwtToken = JWT.create()
+					.withSubject(userEntity.getUsername())
+					.withExpiresAt(new Date(System.currentTimeMillis()+JwtProperties.EXPIRATION_TIME))
+					.withClaim("id", userEntity.getId())
+					.withClaim("username", userEntity.getUsername())
+					.sign(Algorithm.HMAC512(JwtProperties.SECRET));
+			System.out.println("controller.JwtCreateController.java의 jwtCreate의 jwtToken = "+jwtToken);
+
+			return jwtToken;
 
 
-
-		if(userEntity == null) {
-
-			System.out.println("아이디가 틀렸거나 아이디가 없습니다, 회원가입으로 이동");
-			return "안녕";
-
-//			System.out.println("controller.JwtCreateController.java의 jwtCreate의 if(userEntity == null)에 왔습니다 ");
-//
-//
-//			User userRequest = User.builder()
-//					.username(commonUser.getProvider()+"_"+commonUser.getName())
-//					.password(bCryptPasswordEncoder.encode(commonUser.getPassword()))
-//					.email(commonUser.getEmail())
-//					.provider(commonUser.getProvider())
-//					.providerId(commonUser.getProviderId())
-//					.roles("ROLE_USER")
-//					.build();
-//
-//			userEntity = userRepository.save(userRequest);
-//			System.out.println("controller.JwtCreateController.java의 jwtCreate의 if(userEntity == null)의 userEntity = "+userEntity);
+		}else {
+			System.out.println("비번불일치");
+			return "아이디 혹은 패스워드가 일치하지않습니다";
 		}
 
-//		boolean checkPassword = bCryptPasswordEncoder.matches((String)data.get("password"), userEntity.getPassword());
-//		System.out.println("유저의 비번1 ="+userEntity.getPassword());
-//		System.out.println("유저의 비번2 ="+data.get("password"));
-//		System.out.println("비번 체크 = "+checkPassword);
-//		if(!checkPassword) {
-//			System.out.println("비밀번호가 틀렸습니다, 회원가입으로 이동");
-//			return "안녕";
-//		}
-
-		String jwtToken = JWT.create()
-				.withSubject(userEntity.getUsername())
-				.withExpiresAt(new Date(System.currentTimeMillis()+JwtProperties.EXPIRATION_TIME))
-				.withClaim("id", userEntity.getId())
-				.withClaim("username", userEntity.getUsername())
-				.sign(Algorithm.HMAC512(JwtProperties.SECRET));
-		System.out.println("controller.JwtCreateController.java의 jwtCreate의 jwtToken = "+jwtToken);
-
-		return jwtToken;
 	}
 
 

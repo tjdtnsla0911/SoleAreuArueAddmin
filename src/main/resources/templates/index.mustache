@@ -9,33 +9,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
 </head>
-
-
-<button onclick="replay()">새로고침</button>
-<button onclick="related()">관련상품</button>
-<button onclick="back()">전체상품</button>
-<button onclick="userlist()">유저리스트</button>
-<button onclick="addqna()">QnaList </button>
-
-
-<script>
-	function userlist(){
-		location.href="/userlist";
-	}
-	function addqna(){
-		location.href="/addqna";
-	}
-	function back() {
-		location.href = "/list";
-	}
-	function related() {
-		location.href = "/relatedProducts";
-	}
-	function replay() {
-		location.href = "/axios";
-	}
-</script>
-
+{{>./header}}
 <body onload="init();">
 
 	<h1>관리자 페이지입니다.</h1>
@@ -68,8 +42,7 @@
 			<option class="hide" value="1">관련상품있음</option>
 
 
-		</select> <br />
-		<span>관련상품(자식): </span> <select id="relateProductId" name="relateProductId" class="relateProductId">
+		</select> <br /> <span>관련상품(자식): </span> <select id="relateProductId" name="relateProductId" class="relateProductId">
 			<option value="0">관련상품없음</option> {{#list}}
 			<option value="{{id}}">{{title}}</option> {{/list}}
 
@@ -77,30 +50,30 @@
 
 	</form>
 	<script>
-function init(){
-	$(".relateProductId").hide();
-	$("span").hide();
-}
-$(document).ready(function(){
-	if(this.value==0){
-		  $(".relateProductId").hide();
+		function init() {
+			$(".relateProductId").hide();
 			$("span").hide();
-	  }
-  $(".parentProductId").click(function(){
-	  console.log(this.value);
-	  if(this.value==0){
-		  $(".relateProductId").hide();
-	  }
-   // $(".relateProductId").hide();
-  });
-  $(".parentProductId").click(function(){
-	  if(this.value==1){
-		  $("span").show();
-		    $(".relateProductId").show();
-	  }
-  });
-});
-</script>
+		}
+		$(document).ready(function() {
+			if (this.value == 0) {
+				$(".relateProductId").hide();
+				$("span").hide();
+			}
+			$(".parentProductId").click(function() {
+				console.log(this.value);
+				if (this.value == 0) {
+					$(".relateProductId").hide();
+				}
+				// $(".relateProductId").hide();
+			});
+			$(".parentProductId").click(function() {
+				if (this.value == 1) {
+					$("span").show();
+					$(".relateProductId").show();
+				}
+			});
+		});
+	</script>
 
 
 	<script>
@@ -131,49 +104,49 @@ $(document).ready(function(){
 	<script src="/js/addmin.js"></script>
 
 	<script>
-var sel_file;
-$(document).ready(function() {
-	$("#file").on("change", handleImgFileSelect);
-});
-console.log('file의 값 = ',$("#file").val());
-function handleImgFileSelect(e) {
-	var files = e.target.files;
-	var filesArr = Array.prototype.slice.call(files);
-	filesArr.forEach(function(f) {
-		if (!f.type.match("image.*")) {
-			alert("확장자는 이미지 확장자만 가능합니다.");
-			return;
+		var sel_file;
+		$(document).ready(function() {
+			$("#file").on("change", handleImgFileSelect);
+		});
+		console.log('file의 값 = ', $("#file").val());
+		function handleImgFileSelect(e) {
+			var files = e.target.files;
+			var filesArr = Array.prototype.slice.call(files);
+			filesArr.forEach(function(f) {
+				if (!f.type.match("image.*")) {
+					alert("확장자는 이미지 확장자만 가능합니다.");
+					return;
+				}
+				sel_file = f;
+				var reader = new FileReader();
+				reader.onload = function(e) {
+					$("#test").attr("src", e.target.result);
+				}
+				reader.readAsDataURL(f);
+			});
 		}
-		sel_file = f;
-		var reader = new FileReader();
-		reader.onload = function(e) {
-			$("#test").attr("src", e.target.result);
+		var sel_file2;
+		$(document).ready(function() {
+			$("#file2").on("change", handleImgFileSelect2);
+		});
+		console.log('파일2의값 = ', $("#file2").val());
+		function handleImgFileSelect2(e) {
+			var files = e.target.files;
+			var filesArr = Array.prototype.slice.call(files);
+			filesArr.forEach(function(f) {
+				if (!f.type.match("image.*")) {
+					alert("확장자는 이미지 확장자만 가능합니다.");
+					return;
+				}
+				sel_file2 = f;
+				var reader = new FileReader();
+				reader.onload = function(e) {
+					$("#test2").attr("src", e.target.result);
+				}
+				reader.readAsDataURL(f);
+			});
 		}
-		reader.readAsDataURL(f);
-	});
-}
-var sel_file2;
-$(document).ready(function() {
-	$("#file2").on("change", handleImgFileSelect2);
-});
-console.log('파일2의값 = ',$("#file2").val());
-function handleImgFileSelect2(e) {
-	var files = e.target.files;
-	var filesArr = Array.prototype.slice.call(files);
-	filesArr.forEach(function(f) {
-		if (!f.type.match("image.*")) {
-			alert("확장자는 이미지 확장자만 가능합니다.");
-			return;
-		}
-		sel_file2 = f;
-		var reader = new FileReader();
-		reader.onload = function(e) {
-			$("#test2").attr("src", e.target.result);
-		}
-		reader.readAsDataURL(f);
-	});
-}
-</script>
+	</script>
 
 </body>
 </html>

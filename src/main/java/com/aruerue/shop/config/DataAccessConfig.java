@@ -20,6 +20,7 @@ public class DataAccessConfig {
 		sessionFactory.setDataSource(dataSource);
 		sessionFactory.setMapperLocations(
 		new PathMatchingResourcePatternResolver().getResources("classpath:mapper/**/**/*.xml"));
+		//new PathMatchingResourcePatternResolver().getResources("classpath:mapper/*.xml"));
 		return sessionFactory.getObject();
 	}
 
@@ -28,5 +29,4 @@ public class DataAccessConfig {
 		System.out.println("DataAccessConfig : 여긴왔니?");
 		return new SqlSessionTemplate(sqlSessionFactory);
 	}
-
 }

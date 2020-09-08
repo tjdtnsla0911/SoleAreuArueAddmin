@@ -11,4 +11,16 @@
 	WHERE w.userId = #{id};
 </select>
 
+<<<<<<< HEAD
+=======
+<insert id="saveWishlist" >
+	INSERT INTO wishlist (userId, productId)
+ 	VALUES (#{userId}, #{productId});
+</insert>
+
+<delete id="deleteWishlist">
+ DELETE FROM wishlist WHERE id = #{id};
+</delete>
+
+>>>>>>> ce860e50dee10437888782a68a9eb802f68b97be
 </mapper>

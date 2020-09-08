@@ -11,6 +11,18 @@
 	WHERE u.id = #{id};
 </select>
 
+<<<<<<< HEAD
+=======
+<insert id="saveCart" >
+	INSERT INTO cart (productId, userId, quantity, price)
+ 	VALUES (#{productId}, #{userId}, 1, #{price});
+</insert>
+
+<delete id="deleteCart">
+ DELETE FROM cart WHERE id = #{id};
+</delete>
+
+>>>>>>> ce860e50dee10437888782a68a9eb802f68b97be
 
 
 </mapper>

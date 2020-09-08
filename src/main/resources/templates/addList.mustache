@@ -20,31 +20,11 @@ body {
 	background-color: #FF5A5A
 }
 </style>
+
 </head>
 <body>
-<button onclick="replay()">새로고침</button><button onclick="related()">관련상품</button><button onclick="back()">상품등록</button>	<button onclick="goUserList()">유저페이지</button>
-<button onclick="QnaList()">QnaList</button><button onclick="order()">상품관리</button>
+{{>./header}}
 
-<script>
-function order(){
-	location.href="/orders";
-}
-function QnaList(){
-	location.href="/addqna";
-}
-function goUserList(){
-	location.href="/userlist";
-}
-function back(){
-	location.href="/axios";
-}
-function related(){
-location.href="/relatedProducts";
-}
-function replay(){
-	location.href="/list";
-}
-</script>
 
 	<center>
 		<h1>관리자 페이지입니다.</h1>
