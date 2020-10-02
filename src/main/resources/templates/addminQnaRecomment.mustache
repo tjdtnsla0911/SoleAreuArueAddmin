@@ -27,11 +27,11 @@
 
 {{#addminQnaDto}}
 <br/>
-<input type="text" value="{{qnaTitle}}" id="qnaTitle" class="qnaTitle" name="qnaTitle" style="border:none"/><br/>
+<input type="text" value="{{qnaTitle}}" id="qnaTitle" class="qnaTitle" name="qnaTitle" style="border:nonel; width: 300px;"/><br/>
 <hr/>
-작성자 : <input type="text" value="{{username}}" id="username" class="username" name="username" />
+작성자 : <input type="text" value="{{username}}" id="username" class="username" name="username" style="border:none;" />
 
- 작성시간: <input type="text" value="{{createDate}}" id="createDate" class="createDate" name="createDate" />
+ 작성시간: <input type="text" value="{{createDate}}" id="createDate" class="createDate" name="createDate"  style="border:none;"/>
 <br/><br/><br/>
 <input type="text" value="{{content}}" id="content" name="content" class="content" style="width:1000px; height: 100px; border:none " />
 
@@ -44,8 +44,8 @@
 
 <br/>
 <br/><br/>
-작성시간:<input type="text" value="{{createDate}}"/>
-답변 : <input type="text" value="{{comment}}"/>
+작성시간:<input type="text" value="{{createDate}}"  style="border:none;"/><br/><br/>
+답변 : <input type="text" value="{{comment}}" style="border:none; width: 400px; height: 50px;" />
 {{/recoment}}
 
 <div class="form-group green-border-focus">

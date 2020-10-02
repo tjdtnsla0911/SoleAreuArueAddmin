@@ -151,23 +151,30 @@ public class AddminProductController {
 		System.out.println("111111111111111");
 		String thumb =  uuid + "_"+file2.getOriginalFilename();
 		String bgimg = uuid2 + "_"+file.getOriginalFilename();
-
-	System.out.println("썸네일 = "+thumb);
-	System.out.println("bgimg = "+bgimg);
 		Path filePath2 = Paths.get(fileRealPath + thumb);
+		Files.write(filePath2, file2.getBytes());
+	 	String realthumb = "/images/"+thumb;
+		addminDto.setThumb(realthumb);
+		System.out.println("썸네일 = "+thumb);
+		if(bgimg.contains(".")) {
+			System.out.println(".이있다면");
+	
+
+	System.out.println("bgimg = "+bgimg);
+
 		Path filePath = Paths.get(fileRealPath + bgimg);
 		System.out.println("filePath 원조 ="+filePath);
 		System.out.println("filePath = "+fileRealPath);
 		System.out.println("파일.겟바이트는 뭔가 ? = "+file.getBytes());
 		Files.write(filePath, file.getBytes());
-		Files.write(filePath2, file2.getBytes());
 
- 	String realthumb = "/images/"+thumb;
  	String realbgimg = "/images/"+bgimg;
- 		addminDto.setThumb(realthumb);
+ 
 		addminDto.setBgImg(realbgimg);
 		System.out.println("바뀐 bgImg = "+addminDto.getBgImg());
-
+		}else {
+			addminDto.setBgImg("/images/nopic.png");
+		}
 
 		System.out.println("처음온 addminDto.getParentProductId()? = " + addminDto.getParentProductId());
 		if (addminDto.getRadioAd().equals("true")) {
@@ -260,9 +267,11 @@ public class AddminProductController {
 			) throws IOException {
 		System.out.println("좀나와라 ㅅㅂ거");
 		//공통으로쓸곳
+		System.out.println("가져온 product = "+product);
 		Product pro = addminRepository.selectUpdate(product);
 		UUID uuid = UUID.randomUUID();
 		UUID uuid2 = UUID.randomUUID();
+		
 
 		System.out.println("pro = "+pro); //여기서 일단 미리다뽑고
 
@@ -277,6 +286,7 @@ public class AddminProductController {
 			String realBgImg = "/images/"+uuidBgImg;
 			product.setBgImg(realBgImg);
 			product.setThumb(pro.getThumb());
+			System.out.println("찍힌 product = "+product);
 			addminRepository.updata(product);
 			System.out.println("여긴 file2가 null일떄의 리턴직전");
 			return "OK";
@@ -288,13 +298,16 @@ public class AddminProductController {
 			String realSubmb = "/images/"+uuidSubmb;
 			product.setThumb(realSubmb);
 			product.setBgImg(pro.getBgImg());
+			System.out.println("찍힌 product = "+product);
 			addminRepository.updata(product);
 			System.out.println("여긴 file이 null일떄의 return 직전");
 			return "ok";
 		}else if(file ==null && file2 ==null) {
 			System.out.println("여긴 둘다 null일떄");
+			System.out.println("찍힌 product = "+product);
 			product.setThumb(pro.getThumb());
 			product.setBgImg(pro.getBgImg());
+			addminRepository.updata(product);
 
 
 			return "ok";

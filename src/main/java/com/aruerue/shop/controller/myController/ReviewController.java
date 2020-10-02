@@ -26,12 +26,14 @@ public class ReviewController {
 
 	@GetMapping("/review")
 	public List<ReviewRespDto> review() {
+		System.out.println("/review에 왔는가");
 		List<ReviewRespDto> reviewRespDto = repository.findReviews();
 		return reviewRespDto;
 	}
 
 	@GetMapping("/review_detail/{reviewId}")
 	public ReviewDetailRespDto reviewDetail(@PathVariable int reviewId) {
+		System.out.println("/review_detail/{reviewId}에 왔는가");
 		ReviewDetailRespDto reviewDetailRespDto = repository.findReviewById(reviewId);
 		return reviewDetailRespDto;
 	}

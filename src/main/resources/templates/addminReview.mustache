@@ -45,10 +45,34 @@ body {
 	text-decoration: none;
 	cursor: pointer;
 }
+.my-transparent-button {
+    background-color: transparent !important;
+    background-image: none !important;
+    border-color: transparent;
+    border: none;
+
+    color: #FFFFFF;
+}
+
+
+.bg_test{
+filter:olpha(opacity=50);
+opacity:0.8;
+}
+.bus{
+border:0;
+outline:0;
+border-radius: 7px;
+
+}
+            
+
+
 </style>
 
 </head>
 <body>
+<!-- 헤더를 가져오는 터지는데 왜인지모르겟ㄷ -->
 {{>./header}}
 
 
@@ -71,7 +95,14 @@ body {
      {{#reviewList}}
       <tr class="danger">
         <td>{{title}}</td>
-        <td><button class="btn">{{content}}</button></td>
+        <td>
+        <div class ="bg_test">
+        <button name="btn" class="bus">
+        {{content}}
+        </button>
+         <img alt="" src="{{howToPay}}" width="40px;" height="20px;"></td>
+        </div>
+       
         <td>{{username}}</td>
         <td>{{createDate}}</td>
         <td><span style="color: red;">{{realStar}}</span></td>
@@ -111,7 +142,7 @@ body {
 function gogogo(){
 	location.href="/addminWatingAnswser"
 }
-</script>
+ee2</script>
 
 <script type="text/javascript">
 
@@ -119,7 +150,8 @@ function gogogo(){
 //Modal을 가져옵니다.
 var modals = document.getElementsByClassName("modal");
 // Modal을 띄우는 클래스 이름을 가져옵니다.
-var btns = document.getElementsByClassName("btn");
+var btns = document.getElementsByName("btn");
+console.log('btnsの内容は何ですか？＝',btns);
 
 // Modal을 닫는 close 클래스를 가져옵니다.
 var spanes = document.getElementsByClassName("close");
@@ -128,10 +160,12 @@ var funcs = [];
 
 // Modal을 띄우고 닫는 클릭 이벤트를 정의한 함수
 function Modal(num) {
-//	console.log('넘은 ? = ', num);
+	console.log('numは何ですか? = ', num);
 	return function() {
+		console.log('ここに来たんですか❓');
 		// 해당 클래스의 내용을 클릭하면 Modal을 띄웁니다.
 		btns[num].onclick = function() {
+			
 			modals[num].style.display = "block";
 		//	console.log(num);
 		};

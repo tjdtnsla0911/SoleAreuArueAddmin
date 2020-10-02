@@ -7,6 +7,8 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+	{{>./header}}
 <style type="text/css">
 body {
 
@@ -47,20 +49,21 @@ body {
 }
 </style>
 </head>
+
 <body>
-{{>./header}}
+
 	<!--------------------------- 여긴 모달 영역 ----------------------->
 
 
 
 
-	<button class="btn" style="float: right;">쿠폰등록하기</button>
+	<button class="btnk" style="float: right;">쿠폰등록하기</button>
 	<div class="modal">
 		<div class="modal-content">
 			<span class="close">&times;</span>
 			<h2>쿠폰을 등록합시다!!</h2>
 			<hr />
-			<form>
+
 				신규 쿠번번호 <input id="code" name="code" type="text" value="" required />
 				<button class="btn-ViewDetails" id="bt-ViewDetails" style="WIDTH: 100pt; HEIGHT: 20pt">쿠폰번호 생성</button>
 				<br /> <br /> 시작날짜 : <input type="date" name="validityStart" id="validityStart" required><br />
@@ -70,6 +73,7 @@ body {
 				<button class="upload" id="bt-upload" style="WIDTH: 100pt; HEIGHT: 20pt; float: right;">등록하기</button>
 		</div>
 	</div>
+
 
 
 
@@ -108,7 +112,7 @@ body {
 
 
 
-						<button class="btn">쿠폰주기</button>
+						<button class="btnk">쿠폰주기</button>
 						<div class="modal">
 							<div class="modal-content">
 								<div style="overflow: scroll; width: 600px; height: 300px;" class="container">
@@ -275,7 +279,7 @@ $(".userId").val(e);
 	//Modal을 가져옵니다.
 	var modals = document.getElementsByClassName("modal");
 	// Modal을 띄우는 클래스 이름을 가져옵니다.
-	var btns = document.getElementsByClassName("btn");
+	var btns = document.getElementsByClassName("btnk");
 
 	// Modal을 닫는 close 클래스를 가져옵니다.
 	var spanes = document.getElementsByClassName("close");

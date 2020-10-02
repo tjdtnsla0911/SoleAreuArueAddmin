@@ -22,7 +22,16 @@ public class HomeController {
 
 	@GetMapping({"","/"})
 	public HomeResponseDto home() {
+
+	
 		List<HomeAdResoDto> homeAdResoDtos = repository.findHomeAd();
+		for(int i=0;i<=homeAdResoDtos.size()-1;i++) {
+			System.out.println("여기에왔습니다");
+			if(homeAdResoDtos.get(i).getBgimg()=="/images/nopic.png"||homeAdResoDtos.get(i).getBgimg().equals("/images/nopic.png")) {
+				homeAdResoDtos.get(i).setBgimg("0");
+		}
+		}
+		System.out.println("다끝나고 homeAdResoDtos = "+homeAdResoDtos);
 		List<HomeNoticeRespDto> homeNoticeRespDtos = repository.findNotice();
 		List<HomeProductRespDto> homeProductRespDtos = repository.findProductsForHome();
 		List<HomeReviewRespDto> homeReviewRespDtos = repository.findReviewsForHome();
@@ -34,5 +43,8 @@ public class HomeController {
 				.homeReviewRespDto(homeReviewRespDtos)
 				.build();
 		return homeResponseDto;
-	}
+	
+
 }
+}
+	

@@ -2,19 +2,23 @@
 <html>
 <head>
 <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Insert title here</title>
 </head>
 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 <title>Insert title here</title>
+
+
 <style>
 body {
 	background-color: #FF5A5A
@@ -27,31 +31,28 @@ body {
 
 
 	<center>
+	<br/>
 		<h1>관리자 페이지입니다.</h1>
 		<h2>관리자 테이블</h2>
 
 	</center>
-
-	<div class="container">
-		<p>C R U D</p>
-
-		<table class="table">
+		<table class="table" style="widows: 1500px;">
 			<thead>
 				<tr>
 					<th>id</th>
-					<th>title</th>
+					<th  style="width: 150px;">title</th>
 
-					<th>price</th>
-					<th>disc</th>
+					<th >price</th>
+					<th  style="width: 450px;">disc</th>
 					<th>ad</th>
 					<th>discounted</th>
 					<th>content</th>
-					<th style="width: 150">status</th>
+					<th>status</th>
 					<th>bgImg</th>
 					<th>thumb</th>
-					<th >Sale</th>
-					<th >Best</th>
-					<th >New</th>
+					<th style="width: 150px;">Sale</th>
+					<th style="width: 150px;" >Best</th>
+					<th style="width: 150px;" >New</th>
 					<th>기능</th>
 				</tr>
 			</thead>
@@ -69,7 +70,7 @@ body {
 					<td>{{content}}</td>
 					<td>{{categoryId2}}</td>
 
-
+		
 					<td><img src="{{bgImg}}" alt="없다" style="height: 100px"
 						width="100px"/></td>
 							<td><img src="{{thumb}}" alt="없다" style="height: 100px"
@@ -175,7 +176,6 @@ body {
 				{{/productList}}
 			</tbody>
 		</table>
-	</div>
 
 	<!-- ----------------모달 -------------------- -->
 

@@ -19,15 +19,15 @@ location.href="/noticelist"
 {{#notice}}
 
 <input type="hidden" id="id" name="id" value="{{id}}">
-<input type="text" name="title" id="title" value="{{title}}">
+<input type="text" name="title" id="title" value="{{title}}" style="width: 400px; height: 50px; border:none;">
 <br/>
-작성날짜 : <input type="text" name="createDate" id="createDate" value="{{createDate}}" >
+작성날짜 : <input type="text" name="createDate" id="createDate" value="{{createDate}}" style="border: none;">
 <br/>
 <hr/>
 <img alt="등록된사진이없습니다" src="{{thumb}}" style="width: 300px; height: 300px">
 <br/>
 <br/>
-<input type="text" name="content" id="content" value="{{content}}">
+<input type="text" style="width: 800px; height: 200px;" name="content" id="content" value="{{content}}">
 {{/notice}}
 <br/>
 <hr/>

@@ -20,6 +20,7 @@ public class AddminReviewContorller {
 	//여기서 review를 만듭니다
 	@GetMapping("/addminReviewList")
 	public String AddminReview(Model model){
+		System.out.println("addminReviewList에 왔습니다.");
 		String http ="http://localhost:8080";
 		List<AddminReviewDto> reviewList = addminReviewRepository.findAllReviewList();
 		
@@ -46,7 +47,13 @@ public class AddminReviewContorller {
 			}else {
 				reviewList.get(i).setRealStar("★★★★★");
 			}
+			if(reviewList.get(i).getHowToPay()=="네이버페이"||reviewList.get(i).getHowToPay().contentEquals("네이버페이")) {
+				reviewList.get(i).setHowToPay("/images/naverPay.png");
+			}else {
+				reviewList.get(i).setHowToPay("/images/kakaoPay.png");
+			}
 		}
+		System.out.println("하우투페이 = "+reviewList);
 		int size = reviewList.size();
 		model.addAttribute("size",size);
 		model.addAttribute("reviewList",reviewList);
@@ -78,6 +85,10 @@ for(int i=0;i<=notReivew.size()-1;i++) {
 				
 			}else {
 				notReivew.get(i).setRealStar("★★★★★");
+			}if(notReivew.get(i).getHowToPay()=="네이버페이"||notReivew.get(i).getHowToPay().contentEquals("네이버페이")) {
+				notReivew.get(i).setHowToPay("/images/naverPay.png");
+			}else {
+				notReivew.get(i).setHowToPay("/images/kakaoPay.png");
 			}
 		}
 		

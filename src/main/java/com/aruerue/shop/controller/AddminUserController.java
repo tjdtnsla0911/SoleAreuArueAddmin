@@ -41,6 +41,7 @@ public class AddminUserController {
 	// 유저 리스트로 가는곳
 	@GetMapping("/userlist")
 	public String UserList(Model model) {
+		System.out.println("유저리스트 뽑으러 왔습니다.");
 		List<User> user = userRepository.findAll();
 		String http = "http://localhost:8080";
 

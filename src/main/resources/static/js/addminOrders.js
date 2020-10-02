@@ -291,7 +291,7 @@ this.ViewDetails(e);
 						"        <td>"+data.orders_detailId+"</td>\r\n" +
 						"		<td>\r\n" +
 
-						"				<button type=\"button\" data-toggle=\"modal\" data-target=\"#myModal"+data.orders_detailId+"\" style=\"WIDTH: 60pt; HEIGHT: 20pt\">상세보기</button> <br />\r\n" +
+						"				<button type=\"button\" data-toggle=\"modal\" data-target=\"#myModal"+data.orders_detailId+"\" style=\"WIDTH: 60pt; HEIGHT: 20pt\">상태변경</button> <br />\r\n" +
 						"						<form>\r\n" +
 						"							<div class=\"modal fade\" id=\"myModal"+data.orders_detailId+"\" class=\"myModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\">\r\n" +
 						"								<div class=\"modal-dialog\" role=\"document\">\r\n" +
@@ -300,7 +300,7 @@ this.ViewDetails(e);
 						"											<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\r\n" +
 						"												<span aria-hidden=\"true\">&times;</span>\r\n" +
 						"											</button>\r\n" +
-						"											<h4 class=\"modal-title\" id=\"myModalLabel\">회원 정보 수정을 합시다~</h4>\r\n" +
+						"											<h4 class=\"modal-title\" id=\"myModalLabel\">상태를 변경합니다</h4>\r\n" +
 						"											상태변경 : <input type=\"text\" id=\"stats"+data.orders_detailId+"\" name=\"stats\" value=\""+data.stats+"\">\r\n" +
 						"\r\n" +
 						"\r\n" +
